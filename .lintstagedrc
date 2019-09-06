@@ -1,0 +1,10 @@
+{
+  "src/**/*.js": [
+    "eslint --ext=js  ."
+  ],
+  "src/**/*.css": "stylelint",
+  "src/**/*.scss": [
+    "stylelint --syntax=scss"
+  ],
+  "src/**/*.html": "htmllint",
+}
