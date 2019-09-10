@@ -1,6 +1,6 @@
 # RD Front-End Students Pack
 
-This repo esists for student needs
+This repo exists for student needs
 
 By default, this repo includes the following tools:
 * [EditorConfig](https://editorconfig.org/)
