@@ -1,0 +1,23 @@
+:root {
+  --header-bg: #fff9c4;
+  --footer-bg: #fff9c4;
+  --nav-bg: #b2ebf2;
+  --aside-bg: #b2dfdb;
+  --article-bg: #ffccbc;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* your styles */
