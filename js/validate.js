@@ -1,28 +1,35 @@
-function checkType(string) {
-  if (typeof (string) !== 'string') {
-    throw 'Incorrect input data';
-  }
+function isUppercaseLetter(title) {
+  return title.charCodeAt(0) >= 65 && title.charCodeAt(0) <= 90;
 }
 
-function isAppropriateCharachers(string) {
-  let result;
-  string.split('').forEach((item) => {
-    item.charCodeAt(0) > 31 && item.charCodeAt(0) < 127 ? result = 'VALID' : result = 'INVALID';
-  });
-  return result;
+function validateTitleLength(title) {
+  return title.length >= 3 && title.length <= 19;
 }
 
-function validate(string) {
-  checkType(string);
+function isString(title) {
+  return typeof (title) === 'string';
+}
 
-  if (string.length < 3 ||
-     string.length > 19 ||
-     string.charAt(0) !== string.charAt(0).toUpperCase() ||
-     !isNaN(string.charAt(0))) {
+function isAppropriateCharachers(title) {
+  const specialCharacters = ' !:-?.,`';
+
+  return title.split('').every((item) => {
+    return item.charCodeAt(0) > 64 && item.charCodeAt(0) < 91 ||
+      item.charCodeAt(0) > 96 && item.charCodeAt(0) < 123 ||
+      specialCharacters.split('').includes(item);
+  })
+    ? 'VALID'
+    : 'INVALID';
+}
+
+function validate(title) {
+  if (!isString(title) ||
+    !validateTitleLength(title) ||
+    !isUppercaseLetter(title[0])) {
     return 'INVALID';
   }
 
-  isAppropriateCharachers(string);
+  return isAppropriateCharachers(title);
 }
 
-validate('12title');
+validate('itle!!');

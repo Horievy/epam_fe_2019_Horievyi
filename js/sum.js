@@ -1,12 +1,14 @@
 function sum(...args) {
   let result = 0;
-  args.forEach((item) => {
+  args.reduce((accumulator, item) => {
     if (typeof item === 'number' && item % 15 === 0) {
       item *= -1;
     }
-    result += +item;
-  });
+
+    return result = accumulator + +item;
+  }, 0);
+
   return result;
 }
 
-sum('5',15);
+sum('5',30);
