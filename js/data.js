@@ -143,6 +143,21 @@ const mainPage = {
         'title': 'Mountains',
         'subtitle': 'Art, hiking',
       },
+      {
+        'imgLink': 'img/bg-img3.png',
+        'title': 'Mountains',
+        'subtitle': 'Art, hiking',
+      },
+      {
+        'imgLink': 'img/bg-img2.png',
+        'title': 'City guide',
+        'subtitle': 'Photography, city, way',
+      },
+      {
+        'imgLink': 'img/bg-img1.png',
+        'title': 'Art Ocean',
+        'subtitle': 'Photography, art, nature',
+      },
     ],
     'popUp': [
       {

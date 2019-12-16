@@ -1621,17 +1621,36 @@ a:active {
       cursor: pointer; }
       .portfolio__item-wrap:hover .item-popup {
         opacity: 0.5; }
-  .portfolio__item {
+  .portfolio__items {
     position: relative;
     float: left;
-    width: 33.3333333333%;
+    width: 100%;
     min-height: 1px;
     padding-right: 20px;
     padding-left: 20px;
+    overflow: hidden;
+    min-height: 244px; }
+  .portfolio__item {
+    padding: 0 20px;
+    width: 400px;
     height: 244px;
-    background-size: cover; }
+    background-size: cover;
+    position: absolute;
+    left: 100%;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; }
     .portfolio__item:hover .portfolio__item-wrap {
       opacity: 1; }
+    .portfolio__item:first-child {
+      left: -400px; }
+    .portfolio__item:nth-child(2) {
+      left: 0; }
+    .portfolio__item:nth-child(3) {
+      left: 400px; }
+    .portfolio__item:nth-child(4) {
+      left: 800px; }
   .portfolio__image {
     position: absolute;
     z-index: 1; }
@@ -1648,6 +1667,7 @@ a:active {
     color: #fff; }
   .portfolio__btn-wrap {
     text-align: center;
+    margin-top: 244px;
     position: relative;
     float: left;
     width: 33.3333333333%;

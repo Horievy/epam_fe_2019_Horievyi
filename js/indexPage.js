@@ -109,7 +109,8 @@ const makePortfolioSection = () => {
     .appendChild(portfolioTitle)
     .appendChild(portfolioSubtitle);
 
-  const portfolioItemsWrap = makeElement('div', 'portfolio__items');
+  const portfolioItems = makeElement('div', 'portfolio__items');
+  const portfolioItemsWrap = makeElement('div', 'portfolio__items-wrap');
 
   $.items.forEach((item) => {
     const portfolioItem = makeElement('div', 'portfolio__item');
@@ -120,7 +121,8 @@ const makePortfolioSection = () => {
       'src',
       `${item.imgLink}`);
 
-    portfolioItemsWrap.appendChild(portfolioItem)
+    portfolioItems.appendChild(portfolioItemsWrap)
+      .appendChild(portfolioItem)
       .appendChild(portfolioItemWrap)
       .appendChild(portfolioImg);
 
@@ -148,7 +150,7 @@ const makePortfolioSection = () => {
     portfolioItemWrap.appendChild(itemPopUpWrap);
   });
 
-  portfolioBootstrapWrap.firstChild.appendChild(portfolioItemsWrap);
+  portfolioBootstrapWrap.firstChild.appendChild(portfolioItems);
 
   const portfolioBtnWrap = makeElement('div', 'portfolio__btn-wrap');
   const portfolioMenuControl = makeElement('div', 'portfolio__menu-control');
@@ -163,7 +165,7 @@ const makePortfolioSection = () => {
     .appendChild(portfolioBtnLeft)
     .after(portfolioBtnRight);
   portfolioBtnWrap.appendChild(portfolioBtnExpandAll);
-  portfolioBootstrapWrap.firstChild.appendChild(portfolioBtnWrap);
+  portfolioItems.appendChild(portfolioBtnWrap);
 
   main.appendChild(portfolioFragment);
 };
