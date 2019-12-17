@@ -1,310 +1,433 @@
-const makeAboutUsSection = () => {
-  const $ = mainPage.aboutUs;
-  const indexFramgent = document.createDocumentFragment();
+// eslint-disable-next-line max-lines
+const main = document.querySelector('main');
+
+const createAboutUsSection = () => {
+  const itemFragment = document.createDocumentFragment();
   const aboutUsBootstrapWrap = makeBootstrapWrap();
-  const aboutUsContainer = makeElement('section', 'about-us');
-  const aboutUsTitle = createManiHeading('about-us__title-wrap', 'about-us__title heading-main', $.title);
-  const aboutUsSubtitle = makeElement('p','about-us__title-info', $.text);
+  const aboutUsContainer = createElement('section', 'about-us');
 
-  indexFramgent.appendChild(aboutUsBootstrapWrap).firstChild
-    .appendChild(aboutUsContainer)
-    .appendChild(aboutUsTitle)
-    .appendChild(aboutUsSubtitle);
+  const createTitle = () => {
+    const aboutUsTitle = createManiHeading('about-us__title-wrap', 'about-us__title heading-main', mainPage.aboutUs.title);
+    const aboutUsSubtitle = createElement('p','about-us__title-info', mainPage.aboutUs.text);
 
-  const iconsColumn = makeElement('div', 'about-us__left-column');
+    itemFragment
+      .appendChild(aboutUsBootstrapWrap).firstChild
+      .appendChild(aboutUsContainer)
+      .appendChild(aboutUsTitle)
+      .appendChild(aboutUsSubtitle);
 
-  for (const key in $.icons) {
-    const item = makeElement('div', `about-us__item about-us__item--${key}`);
-    const title = makeElement('h3', 'about-us__subtitle', `${$.icons[key]}`);
-    const icon = makeElement('span', `about-us__icon about-us__icon--${key}`);
+    return itemFragment;
+  };
 
-    aboutUsContainer.appendChild(iconsColumn)
-      .appendChild(item)
-      .appendChild(title)
-      .after(icon);
-  }
+  const createIconsColumn = () => {
+    const iconsColumn = createElement('div', 'about-us__left-column');
 
-  const rightColumn = makeElement('div', 'about-us__right-column');
-  const playerWrap = makeElement('div', 'about-us__player');
-  const video = makeElement('video',
-    'about-us__video',
-    `${$.video.text}`,
-    'src',
-    `${$.video.link}`);
+    for (const key in mainPage.aboutUs.icons) {
+      const item = createElement('div', `about-us__item about-us__item--${key}`);
+      const title = createElement('h3', 'about-us__subtitle', `${mainPage.aboutUs.icons[key]}`);
+      const icon = createElement('span', `about-us__icon about-us__icon--${key}`);
 
-  setAttributes(video, {
-    autoplay: '',
-    loop: '',
-    muted: '',
-  });
+      aboutUsContainer
+        .appendChild(iconsColumn)
+        .appendChild(item)
+        .appendChild(title)
+        .after(icon);
+    }
 
-  aboutUsContainer.appendChild(rightColumn)
-    .appendChild(playerWrap)
-    .appendChild(video);
+    return aboutUsContainer;
+  };
 
-  main.appendChild(indexFramgent);
+  const createRightColumn = () => {
+    const rightColumn = createElement('div', 'about-us__right-column');
+    const playerWrap = createElement('div', 'about-us__player');
+    const video = createElement('video',
+      'about-us__video',
+      `${mainPage.aboutUs.video.text}`,
+      'src',
+      `${mainPage.aboutUs.video.link}`);
+
+    setMultiAttributes(video, {
+      autoplay: null,
+      loop: null,
+      muted: null,
+    });
+
+    aboutUsContainer
+      .appendChild(rightColumn)
+      .appendChild(playerWrap)
+      .appendChild(video);
+
+    return aboutUsContainer;
+  };
+
+  createTitle();
+  createIconsColumn();
+  createRightColumn();
+
+  return itemFragment;
 };
 
-const makeLatestPosts = () => {
-  const $ = mainPage.post;
+const createLatestPosts = () => {
   const postFragment = document.createDocumentFragment();
   const postHeadingBootstrap = makeBootstrapWrap();
-  const postHeadingSection = makeElement('section', 'latest-post');
-  const postTitle = createManiHeading('latest-post__text-wrap', 'latest-post__title heading-main', `${$.title}`);
-  const postSubtitle = makeElement('p','latest-post__title-info heading-main__subtitle', `${$.text}`);
+  const postHeadingSection = createElement('section', 'latest-post');
 
-  postFragment.appendChild(postHeadingBootstrap)
-    .firstChild
-    .appendChild(postHeadingSection)
-    .appendChild(postTitle)
-    .appendChild(postSubtitle);
+  const createTitle = () => {
+    const postTitle = createManiHeading('latest-post__text-wrap', 'latest-post__title heading-main', `${mainPage.post.title}`);
+    const postSubtitle = createElement('p','latest-post__title-info heading-main__subtitle', `${mainPage.post.text}`);
 
-  const postsWrap = makeElement('div', 'post');
-  const postsBootstrapWrap = makeBootstrapWrap();
+    postFragment
+      .appendChild(postHeadingBootstrap).firstChild
+      .appendChild(postHeadingSection)
+      .appendChild(postTitle)
+      .appendChild(postSubtitle);
 
-  postFragment.appendChild(postsWrap)
-    .appendChild(postsBootstrapWrap);
+    return postFragment;
+  };
 
-  $.posts.forEach((item, index) => {
-    const postItem = makeElement('div', 'post__item post__item--main-page');
-    const postWrap = makeElement('div', 'post__wrap post__wrap--main-page');
-    const postImg = makeElement('img',
-      'post__folder post__folder--main-page',
-      '' ,
-      'src',
-      `${item.imgLink}`);
+  const createPosts = () => {
+    const postsWrap = createElement('div', 'post');
+    const postsBootstrapWrap = makeBootstrapWrap();
 
-    const postTextWrap = makeElement('div', 'post__text-wrap post__text-wrap--main-page');
-    const postHeading = makeElement('h3', 'post__heading post__heading--main-page');
-    const postLink = makeElement('a', 'post__link' , `${item.headingText}`);
-    const postText = makeElement('p', 'post__text post__text--main-page' , `${item.paragraphText}`);
-    const infoBlock = createInfoBlock($, index);
+    postFragment
+      .appendChild(postsWrap)
+      .appendChild(postsBootstrapWrap);
 
-    postsBootstrapWrap.firstChild
-      .appendChild(postItem)
-      .appendChild(postWrap)
-      .appendChild(postImg);
+    mainPage.post.posts.forEach((item, index) => {
+      const postItem = createElement('div', 'post__item post__item--main-page');
+      const postWrap = createElement('div', 'post__wrap post__wrap--main-page');
+      const postImg = createElement('img',
+        'post__folder post__folder--main-page',
+        '' ,
+        'src',
+        `${item.imgLink}`);
 
-    postWrap.appendChild(postTextWrap)
-      .appendChild(postHeading)
-      .appendChild(postLink);
+      const postTextWrap = createElement('div', 'post__text-wrap post__text-wrap--main-page');
+      const postHeading = createElement('h3', 'post__heading post__heading--main-page');
+      const postLink = createElement('a', 'post__link' , `${item.headingText}`);
+      const postText = createElement('p', 'post__text post__text--main-page' , `${item.paragraphText}`);
+      const infoBlock = createInfoBlock(mainPage.post, index);
 
-    postTextWrap.appendChild(postText);
-    postTextWrap.appendChild(infoBlock);
-  });
+      postsBootstrapWrap.firstChild
+        .appendChild(postItem)
+        .appendChild(postWrap)
+        .appendChild(postImg);
 
-  main.appendChild(postFragment);
+      postWrap
+        .appendChild(postTextWrap)
+        .appendChild(postHeading)
+        .appendChild(postLink);
+
+      postTextWrap.appendChild(postText);
+      postTextWrap.appendChild(infoBlock);
+    });
+
+    return postFragment;
+  };
+
+  createTitle();
+  createPosts();
+
+  return postFragment;
 };
 
-const makePortfolioSection = () => {
-  const $ = mainPage.portfolio;
+const createPortfolioSection = () => {
   const portfolioFragment = document.createDocumentFragment();
   const portfolioBootstrapWrap = makeBootstrapWrap();
-  const portfolioSection = makeElement('section', 'portfolio');
-  const portfolioTitle = createManiHeading('portfolio__title-wrap', 'portfolio__title heading-main', `${$.title}`);
-  const portfolioSubtitle = makeElement('p','portfolio__title-info heading-main__subtitle', `${$.text}`);
+  const portfolioSection = createElement('section', 'portfolio');
 
-  portfolioFragment.appendChild(portfolioSection)
-    .appendChild(portfolioBootstrapWrap).firstChild
-    .appendChild(portfolioTitle)
-    .appendChild(portfolioSubtitle);
+  const createTitle = () => {
+    const portfolioTitle = createManiHeading('portfolio__title-wrap', 'portfolio__title heading-main', `${mainPage.portfolio.title}`);
+    const portfolioSubtitle = createElement('p','portfolio__title-info heading-main__subtitle', `${mainPage.portfolio.text}`);
 
-  const portfolioItemsWrap = makeElement('div', 'portfolio__items');
+    portfolioFragment
+      .appendChild(portfolioSection)
+      .appendChild(portfolioBootstrapWrap).firstChild
+      .appendChild(portfolioTitle)
+      .appendChild(portfolioSubtitle);
 
-  $.items.forEach((item) => {
-    const portfolioItem = makeElement('div', 'portfolio__item');
-    const portfolioItemWrap = makeElement('div', 'portfolio__item-wrap');
-    const portfolioImg = makeElement('img',
-      'portfolio__image',
-      '' ,
-      'src',
-      `${item.imgLink}`);
+    return portfolioFragment;
+  };
 
-    portfolioItemsWrap.appendChild(portfolioItem)
-      .appendChild(portfolioItemWrap)
-      .appendChild(portfolioImg);
+  const createPortfolioItems = () => {
+    const portfolioItemsWrap = createElement('div', 'portfolio__items');
 
-    const portfolioTextWrap = makeElement('div', 'portfolio__text-wrap');
-    const portfolioItemName = makeElement('h3', 'portfolio__item-name', `${item.title}`);
-    const portfolioItemDescription = makeElement('p', 'portfolio__item-description', `${item.subtitle}`);
+    mainPage.portfolio.items.forEach((item) => {
+      const portfolioItem = createElement('div', 'portfolio__item');
+      const portfolioItemWrap = createElement('div', 'portfolio__item-wrap');
+      const portfolioImg = createElement('img',
+        'portfolio__image',
+        '' ,
+        'src',
+        `${item.imgLink}`);
 
-    portfolioItemWrap.appendChild(portfolioTextWrap)
-      .appendChild(portfolioItemName);
-    portfolioTextWrap.appendChild(portfolioItemDescription);
+      portfolioItemsWrap
+        .appendChild(portfolioItem)
+        .appendChild(portfolioItemWrap)
+        .appendChild(portfolioImg);
 
-    const itemPopUpWrap = makeElement('div', 'item-popup');
+      const portfolioTextWrap = createElement('div', 'portfolio__text-wrap');
+      const portfolioItemName = createElement('h3', 'portfolio__item-name', `${item.title}`);
+      const portfolioItemDescription = createElement('p', 'portfolio__item-description', `${item.subtitle}`);
 
-    $.popUp.forEach((item) => {
-      const itemPopUpIcon = makeElement('div', `item-popup__icon-${item.iconModifyer}`);
-      const itemPopUpLink = makeElement('div',
-        'item-popup__link',
-        '',
-        'href',
-        '#');
+      portfolioItemWrap
+        .appendChild(portfolioTextWrap)
+        .appendChild(portfolioItemName);
+      portfolioTextWrap.appendChild(portfolioItemDescription);
 
-      itemPopUpWrap.appendChild(itemPopUpLink)
-        .appendChild(itemPopUpIcon);
+      const itemPopUpWrap = createElement('div', 'item-popup');
+
+      mainPage.portfolio.popUp.forEach((item) => {
+        const itemPopUpIcon = createElement('div', `item-popup__icon-${item.iconModifyer}`);
+        const itemPopUpLink = createElement('div',
+          'item-popup__link',
+          '',
+          'href',
+          '#');
+
+        itemPopUpWrap
+          .appendChild(itemPopUpLink)
+          .appendChild(itemPopUpIcon);
+      });
+      portfolioItemWrap.appendChild(itemPopUpWrap);
     });
-    portfolioItemWrap.appendChild(itemPopUpWrap);
-  });
 
-  portfolioBootstrapWrap.firstChild.appendChild(portfolioItemsWrap);
+    portfolioBootstrapWrap.firstChild.appendChild(portfolioItemsWrap);
 
-  const portfolioBtnWrap = makeElement('div', 'portfolio__btn-wrap');
-  const portfolioMenuControl = makeElement('div', 'portfolio__menu-control');
-  const portfolioBtnLeft = makeElement('button', 'menu-btn');
-  const portfolioBtnRight = makeElement('button', 'menu-btn menu-btn--right');
-  const portfolioBtnExpandAll = makeElement('a',
-    'portfolio__btn btn btn--secondary',
-    `${$.btnText}`,
-    'href',
-    '#');
-  portfolioBtnWrap.appendChild(portfolioMenuControl)
-    .appendChild(portfolioBtnLeft)
-    .after(portfolioBtnRight);
-  portfolioBtnWrap.appendChild(portfolioBtnExpandAll);
-  portfolioBootstrapWrap.firstChild.appendChild(portfolioBtnWrap);
+    return portfolioBootstrapWrap;
+  };
 
-  main.appendChild(portfolioFragment);
+  const createPortfolioButtons = () => {
+    const portfolioBtnWrap = createElement('div', 'portfolio__btn-wrap');
+    const portfolioMenuControl = createElement('div', 'portfolio__menu-control');
+    const portfolioBtnLeft = createElement('button', 'menu-btn');
+    const portfolioBtnRight = createElement('button', 'menu-btn menu-btn--right');
+    const portfolioBtnExpandAll = createElement('a',
+      'portfolio__btn btn btn--secondary',
+      `${mainPage.portfolio.btnText}`,
+      'href',
+      '#');
+
+    portfolioBtnWrap
+      .appendChild(portfolioMenuControl)
+      .appendChild(portfolioBtnLeft)
+      .after(portfolioBtnRight);
+    portfolioBtnWrap.appendChild(portfolioBtnExpandAll);
+    portfolioBootstrapWrap.firstChild.appendChild(portfolioBtnWrap);
+
+    return portfolioBootstrapWrap;
+  };
+
+  createTitle();
+  createPortfolioItems();
+  createPortfolioButtons();
+
+  return portfolioFragment;
 };
 
-const makeTestimonialsSection = () => {
-  const $ = mainPage.testimonals;
+const createTestimonialsSection = () => {
   const testimonialsFragment = document.createDocumentFragment();
-  const testimonalsSection = makeElement('section', 'testimonials');
+  const testimonialsSection = createElement('section', 'testimonials');
   const testimonialsBootstrapWrap = makeBootstrapWrap();
-  const testimonialsTitle = createManiHeading('testimonials__title-wrap', 'testimonials__title heading-main', `${$.title}`);
-  const testimonalsPersonWrap = makeElement('div', 'testimonials__person-wrap');
 
-  testimonialsFragment.appendChild(testimonalsSection)
-    .appendChild(testimonialsBootstrapWrap).firstChild
-    .appendChild(testimonialsTitle);
+  const createTitle = () => {
+    const testimonialsTitle = createManiHeading('testimonials__title-wrap', 'testimonials__title heading-main', `${mainPage.testimonials.title}`);
 
-  $.persons.forEach((item) => {
-    const testimonalsPerson = makeElement('div', 'testimonials__person person');
-    const testimonalsTextWrap = makeElement('div', 'testimonials__text');
-    const testimonalsPersonQuote = makeElement('p', 'person__quote', `${item.personQuote}`);
-    const testimonalsPersonInfoWrap = makeElement('p', 'person__info');
-    const testimonalsPersonName = makeElement('span', 'person__name', `${item.personName}`);
-    const testimonalsPersonPosition = makeElement('span', 'person__position', `${item.personRole}`);
-    const testimonalsBtnLeft = makeElement('button', 'testimonials__button-left menu-btn');
-    const testimonalsBtnRight = makeElement('button', 'testimonials__button-right menu-btn menu-btn--right');
-    const testimonalsPersonImage = makeElement('img',
-      'testimonials__img person__photo',
-      '' ,
-      'src',
-      `${item.image}`);
+    testimonialsFragment
+      .appendChild(testimonialsSection)
+      .appendChild(testimonialsBootstrapWrap).firstChild
+      .appendChild(testimonialsTitle);
 
-    testimonalsPersonInfoWrap.appendChild(testimonalsPersonName)
-      .after(testimonalsPersonPosition);
+    return testimonialsFragment;
+  };
 
-    testimonalsPersonPosition.insertAdjacentHTML('beforebegin', '<br/>');
+  const createPersonBlock = () => {
+    const testimonialsPersonWrap = createElement('div', 'testimonials__person-wrap');
 
-    testimonalsPersonWrap.appendChild(testimonalsPerson)
-      .appendChild(testimonalsTextWrap)
-      .appendChild(testimonalsPersonQuote)
-      .after(testimonalsPersonInfoWrap);
+    mainPage.testimonials.persons.forEach((item) => {
+      const testimonialsPerson = createElement('div', 'testimonials__person person');
+      const testimonialsTextWrap = createElement('div', 'testimonials__text');
+      const testimonialsPersonQuote = createElement('p', 'person__quote', `${item.personQuote}`);
+      const testimonialsPersonInfoWrap = createElement('p', 'person__info');
+      const testimonialsPersonName = createElement('span', 'person__name', `${item.personName}`);
+      const testimonialsPersonPosition = createElement('span', 'person__position', `${item.personRole}`);
+      const testimonialsPersonImage = createElement('img',
+        'testimonials__img person__photo',
+        '' ,
+        'src',
+        `${item.image}`);
 
-    testimonalsPerson.appendChild(testimonalsPersonImage);
+      testimonialsPersonInfoWrap
+        .appendChild(testimonialsPersonName)
+        .after(testimonialsPersonPosition);
 
-    testimonalsPersonWrap.appendChild(testimonalsBtnLeft)
-      .after(testimonalsBtnRight);
-  });
-  testimonialsBootstrapWrap.firstChild.appendChild(testimonalsPersonWrap);
+      testimonialsPersonPosition.insertAdjacentHTML('beforebegin', '<br/>');
 
-  main.appendChild(testimonialsFragment);
+      testimonialsPersonWrap
+        .appendChild(testimonialsPerson)
+        .appendChild(testimonialsTextWrap)
+        .appendChild(testimonialsPersonQuote)
+        .after(testimonialsPersonInfoWrap);
+
+      testimonialsPerson.appendChild(testimonialsPersonImage);
+    });
+
+    const testimonialsBtnLeft = createElement('button', 'testimonials__button-left menu-btn');
+    const testimonialsBtnRight = createElement('button', 'testimonials__button-right menu-btn menu-btn--right');
+
+    testimonialsPersonWrap
+      .appendChild(testimonialsBtnLeft)
+      .after(testimonialsBtnRight);
+    testimonialsBootstrapWrap.firstChild.appendChild(testimonialsPersonWrap);
+
+    return testimonialsPersonWrap;
+  };
+
+  createTitle();
+  createPersonBlock();
+
+  return testimonialsFragment;
 };
 
-const makeContactSection = () => {
-  const $ = mainPage.contact;
+const createContactSection = () => {
   const contactFragment = document.createDocumentFragment();
-  const contactSection = makeElement('section', 'contact');
-  const contactHeadingBootstrapWrap = makeBootstrapWrap();
-  const contactTitle = createManiHeading('contact__title-wrap', 'contact__title heading-main', `${$.title}`);
-  const contactSubtitle = makeElement('p','contact__title-text', `${$.text}`);
-
-  contactFragment.appendChild(contactSection)
-    .appendChild(contactHeadingBootstrapWrap).firstChild
-    .appendChild(contactTitle)
-    .appendChild(contactSubtitle);
-
-  const contactBodyWrap = makeElement('div', 'contact__body');
+  const contactSection = createElement('section', 'contact');
+  const contactBodyWrap = createElement('div', 'contact__body');
   const contactBodyBootstrapWrap = makeBootstrapWrap();
-  const contactInfo = makeElement('div', 'contact__info');
-  const contactInfoTitle = makeElement('h3', 'contact__sub-heading', `${$.info.title}`);
-  const contactInfoList = makeElement('ul', 'contact__steps');
 
-  contactSection.appendChild(contactBodyWrap)
-    .appendChild(contactBodyBootstrapWrap).firstChild
-    .appendChild(contactInfo)
-    .appendChild(contactInfoTitle)
-    .after(contactInfoList);
+  const createTitle = () => {
+    const contactHeadingBootstrapWrap = makeBootstrapWrap();
+    const contactTitle = createManiHeading('contact__title-wrap', 'contact__title heading-main', `${mainPage.contact.title}`);
+    const contactSubtitle = createElement('p','contact__title-text', `${mainPage.contact.text}`);
 
-  $.info.items.forEach((item, index, arr) => {
-    const contactInfoListItem = makeElement('li', 'contact__step');
-    if (arr[index] === arr[arr.length - 1]) {
-      contactInfoListItem.classList.add('contact__step--last');
-    }
+    contactFragment
+      .appendChild(contactSection)
+      .appendChild(contactHeadingBootstrapWrap).firstChild
+      .appendChild(contactTitle)
+      .appendChild(contactSubtitle);
 
-    const contactInfoListItemTitle = makeElement('h4', 'contact__step-title', `${item.title}`);
-    const contactInfoListItemNumber = makeElement('span', 'contact__li-num', `${item.number}`);
-    const contactInfoListItemText = makeElement('p', 'contact__step-text', `${item.text}`);
+    return contactFragment;
+  };
 
-    contactInfoListItemTitle.prepend(contactInfoListItemNumber);
-    contactInfoList.appendChild(contactInfoListItem)
-      .appendChild(contactInfoListItemTitle)
-      .after(contactInfoListItemText);
-  });
+  const createContactBodyWrapper = () => {
+    contactSection
+      .appendChild(contactBodyWrap)
+      .appendChild(contactBodyBootstrapWrap);
 
-  const followLinks = document.querySelector('.follow-links').cloneNode(true);
-  followLinks.className = 'contact__links follow-links';
-  contactInfo.appendChild(followLinks);
+    return contactSection;
+  };
 
-  const contactRightBlock = makeElement('div', 'contact__right-block');
-  const contactFormWrap = makeElement('div', 'contact__form-wrap');
-  const contachMessageWrap = makeElement('div', 'contact__message');
-  const contactFormMessage = makeElement('p', 'contact__message-text' , `${$.messageText}`);
-  const formWrap = makeElement('div', 'contact__form form');
+  const createContactInfoBlock = () => {
+    const contactInfo = createElement('div', 'contact__info');
+    const contactInfoTitle = createElement('h3', 'contact__sub-heading', `${mainPage.contact.info.title}`);
+    const contactInfoList = createElement('ul', 'contact__steps');
 
-  contactBodyBootstrapWrap.firstChild.appendChild(contactRightBlock)
-    .appendChild(contactFormWrap)
-    .appendChild(contachMessageWrap)
-    .appendChild(contactFormMessage);
+    mainPage.contact.info.items.forEach((item, index, arr) => {
+      const contactInfoListItem = createElement('li', 'contact__step');
+      if (arr[index] === arr[arr.length - 1]) {
+        contactInfoListItem.classList.add('contact__step--last');
+      }
 
-  contactFormWrap.appendChild(formWrap);
+      const contactInfoListItemTitle = createElement('h4', 'contact__step-title', `${item.title}`);
+      const contactInfoListItemNumber = createElement('span', 'contact__li-num', `${item.number}`);
+      const contactInfoListItemText = createElement('p', 'contact__step-text', `${item.text}`);
 
-  $.formItems.forEach((item) => {
-    const formLabel = makeElement('label', 'form__input-wrap', '', 'for', `${item.id}`);
-    const formInputTitle = makeElement('span', 'form__input-title', `${item.title}`);
-    const fomrInput = makeElement('input', 'form__input', '', 'type', `${item.type}`);
-    fomrInput.setAttribute('id', `${item.id}`);
+      contactInfoListItemTitle.prepend(contactInfoListItemNumber);
+      contactInfoList
+        .appendChild(contactInfoListItem)
+        .appendChild(contactInfoListItemTitle)
+        .after(contactInfoListItemText);
+    });
 
-    formWrap.appendChild(formLabel)
-      .appendChild(formInputTitle)
-      .after(fomrInput);
+    const followLinks = document.querySelector('.follow-links').cloneNode(true);
+    followLinks.className = 'contact__links follow-links';
+    contactInfo.appendChild(followLinks);
 
-    if (item.showPasText) {
-      const showPassText = makeElement('span', 'form__input-show-pass', `${item.showPasText}`);
-      fomrInput.after(showPassText);
-    }
-  });
+    contactBodyBootstrapWrap.firstChild
+      .appendChild(contactInfo)
+      .appendChild(contactInfoTitle)
+      .after(contactInfoList);
 
-  const formBtn = makeElement('button', 'form__btn btn btn--primary', `${$.btnText}`);
-  const formAnnotation = makeElement('p', 'form__annotation', `${$.annotation} `);
-  const formEmail = makeElement('a', 'form__annotation-link', `${$.email}` ,'title', `${$.email}`);
-  formEmail.setAttribute('href', '#');
-  const map = makeElement('div', 'contact__map');
-  formAnnotation.appendChild(formEmail);
-  formWrap.appendChild(formBtn)
-    .after(formAnnotation);
-  contactFormWrap.appendChild(map);
+    return contactBodyBootstrapWrap;
+  };
 
-  main.appendChild(contactFragment);
+  const createFormBlock = () => {
+    const contactRightBlock = createElement('div', 'contact__right-block');
+    const contactFormWrap = createElement('div', 'contact__form-wrap');
+    const formWrap = createElement('div', 'contact__form form');
+
+    contactBodyBootstrapWrap.firstChild
+      .appendChild(contactRightBlock)
+      .appendChild(contactFormWrap);
+
+    const createFormTopMessage = () => {
+      const contachMessageWrap = createElement('div', 'contact__message');
+      const contactFormMessage = createElement('p', 'contact__message-text' , `${mainPage.contact.messageText}`);
+
+      contactFormWrap
+        .appendChild(contachMessageWrap)
+        .appendChild(contactFormMessage);
+
+      contactFormWrap.appendChild(formWrap);
+
+      return contactFormWrap;
+    };
+
+    const createFormActiveElements = () => {
+      const formBtn = createElement('button', 'form__btn btn btn--primary', `${mainPage.contact.btnText}`);
+
+      mainPage.contact.formItems.forEach((item) => {
+        const formLabel = createElement('label', 'form__input-wrap', '', 'for', `${item.id}`);
+        const formInputTitle = createElement('span', 'form__input-title', `${item.title}`);
+        const fomrInput = createElement('input', 'form__input', '', 'type', `${item.type}`);
+        fomrInput.setAttribute('id', `${item.id}`);
+
+        formWrap
+          .appendChild(formLabel)
+          .appendChild(formInputTitle)
+          .after(fomrInput);
+
+        if (item.showPasText) {
+          const showPassText = createElement('span', 'form__input-show-pass', `${item.showPasText}`);
+          fomrInput.after(showPassText);
+        }
+      });
+      formWrap.appendChild(formBtn);
+
+      return formWrap;
+    };
+
+    const createFormAdditionalInfo = () => {
+      const formAnnotation = createElement('p', 'form__annotation', `${mainPage.contact.annotation} `);
+      const formEmail = createElement('a', 'form__annotation-link', `${mainPage.contact.email}` ,'title', `${mainPage.contact.email}`);
+      formEmail.setAttribute('href', '#');
+      const map = createElement('div', 'contact__map');
+      formAnnotation.appendChild(formEmail);
+      formWrap.appendChild(formAnnotation);
+      contactFormWrap.appendChild(map);
+
+      return contactFormWrap;
+    };
+
+    createFormTopMessage();
+    createFormActiveElements();
+    createFormAdditionalInfo();
+
+    return contactFormWrap;
+  };
+
+  createTitle();
+  createContactBodyWrapper();
+  createContactInfoBlock();
+  createFormBlock();
+
+  return contactFragment;
 };
 
-makeAboutUsSection();
-makeLatestPosts();
-makePortfolioSection();
-makeTestimonialsSection();
-makeContactSection();
+initialize(main,
+  createAboutUsSection(),
+  createLatestPosts(),
+  createPortfolioSection(),
+  createTestimonialsSection(),
+  createContactSection());
 

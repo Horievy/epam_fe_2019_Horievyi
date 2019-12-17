@@ -35,7 +35,7 @@
     ],
     "no-multi-spaces": "error",
     "no-extra-bind": "error",
-    "no-undefined": "error",
+//    "no-undefined": "error", For DOM rendering homework
     "no-void": "error",
     "camelcase": "warn", // TODO: should be error. Conflicts with BEM notation using underscore for modifiers
     "linebreak-style": 0,
@@ -125,10 +125,10 @@
       "error",
       "never"
     ],
-    "quote-props": [
-      "error",
-      "as-needed"
-    ],
+//    "quote-props": [
+//      "error",
+//      "as-needed"
+//    ],
     "quotes": [
       "error",
       "single"

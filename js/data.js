@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-lines
 const blog = {
   'heading': 'blog',
   'searchPlaceholder': 'Search by author',
@@ -154,12 +155,12 @@ const mainPage = {
     ],
     'btnText': 'See all works',
   },
-  'testimonals': {
+  'testimonials': {
     'title': 'Testimonials',
     'persons': [
       {
         'personName': 'Martin Oda',
-        'personRole': 'Product desgner',
+        'personRole': 'Product designer',
         'image': 'img/User-img.png',
         'personQuote': 'We move at a fast pace. I’m always working on something. I am excited about it!',
       },
@@ -204,7 +205,7 @@ const mainPage = {
         'title': 'Password',
         'id': 'formPass',
         'type': 'password',
-        'showPasText': 'show'
+        'showPasText': 'show',
       },
     ],
     'btnText': 'Send message',
