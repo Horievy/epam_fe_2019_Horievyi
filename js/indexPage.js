@@ -106,7 +106,7 @@ const createLatestPosts = () => {
       const postHeading = createElement('h3', 'post__heading post__heading--main-page');
       const postLink = createElement('a', 'post__link' , `${item.headingText}`);
       const postText = createElement('p', 'post__text post__text--main-page' , `${item.paragraphText}`);
-      const infoBlock = createInfoBlock(mainPage.post, index);
+      const infoBlock = createInfoBlock(mainPage.post.posts, index);
 
       postsBootstrapWrap.firstChild
         .appendChild(postItem)

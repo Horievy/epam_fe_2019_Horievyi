@@ -678,7 +678,6 @@ a:active {
 }
 
 .person {
-  
   &__quote {
     position: relative;
     font: 17px/26px $semiBoldFont;
@@ -1610,9 +1609,7 @@ a:active {
       left: 0;
     }
 
-    &--first {
-      background: url("../img/Neil 1.png") no-repeat;
-
+    &:first-child {
       &::before {
         @include pseudo(16px, 16px);
 
@@ -1623,13 +1620,7 @@ a:active {
       }
     }
 
-    &--second {
-      background: url("../img/Sarah 1.png") no-repeat;
-    }
-
-    &--last {
-      background: url("../img/Ann.png") no-repeat;
-
+    &:last-child {
       &::before {
         @include pseudo(16px, 16px);
 
@@ -1643,6 +1634,11 @@ a:active {
         margin-bottom: 0;
       }
     }
+  }
+
+  &__item-author-avatar {
+    position: absolute;
+    left: 0;
   }
 
   &__text {

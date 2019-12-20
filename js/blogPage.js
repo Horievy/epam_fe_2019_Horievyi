@@ -47,7 +47,7 @@ function createPost(postType, index) {
       'post__heading',
       blog.posts[index].heading);
 
-    const infoBlock = createInfoBlock(blog, index);
+    const infoBlock = createInfoBlock(blog.posts, index);
 
     postInfoWrap.appendChild(postAuthor);
     postAuthor.appendChild(authorName);

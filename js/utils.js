@@ -28,11 +28,20 @@ const appendAll = (array, parentToAppend) =>
 
 function createInfoBlock(obj, index) {
   const infoBlock = createElement('div', 'info-block');
+  let currentKey;
+  if (index !== null) {
+    for (const key in obj[index].infoBlock) {
+      currentKey = createElement('span',
+        `info-block__item info-block__${key}`,
+        obj[index].infoBlock[key]);
+      infoBlock.appendChild(currentKey);
+    }
+  }
 
-  for (const key in obj.posts[index].infoBlock) {
-    const currentKey = createElement('span',
+  for (const key in obj.infoBlock) {
+    currentKey = createElement('span',
       `info-block__item info-block__${key}`,
-      obj.posts[index].infoBlock[key]);
+      obj.infoBlock[key]);
     infoBlock.appendChild(currentKey);
   }
 
