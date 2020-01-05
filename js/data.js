@@ -1,4 +1,5 @@
-// eslint-disable-next-line max-lines
+/* eslint-disable max-lines */
+/* eslint-disable no-unused-vars */
 const blog = {
   'heading': 'blog',
   'searchPlaceholder': 'Search by author',

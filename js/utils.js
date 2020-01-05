@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line max-params
 const createElement = (tagName, classList, textVal, attrName, attrVal) => {
   const element = document.createElement(tagName);
   element.className = classList;
@@ -26,17 +28,9 @@ const appendAll = (array, parentToAppend) =>
     parentToAppend.appendChild(item);
   });
 
-function createInfoBlock(obj, index) {
+function createInfoBlock(obj) {
   const infoBlock = createElement('div', 'info-block');
   let currentKey;
-  if (index !== null) {
-    for (const key in obj[index].infoBlock) {
-      currentKey = createElement('span',
-        `info-block__item info-block__${key}`,
-        obj[index].infoBlock[key]);
-      infoBlock.appendChild(currentKey);
-    }
-  }
 
   for (const key in obj.infoBlock) {
     currentKey = createElement('span',
@@ -72,3 +66,27 @@ function initialize(parentToAppend, ...fragmentsToAppend) {
   });
 }
 
+class formController {
+  constructor() {
+    this.btn = document.querySelector('.btn--create-post');
+    this.form = document.querySelector('.create-post-form');
+  }
+
+  showForm() {
+    this.btn.addEventListener('click', () => {
+      this.form.style.display = 'block';
+    });
+  }
+
+  hideForm() {
+    document.addEventListener('keyup', (event) => {
+      if (event.key === 'Escape') {
+        this.form.style.display = 'none';
+      }
+    });
+  }
+}
+
+const createNewPostForm = new formController();
+createNewPostForm.showForm();
+createNewPostForm.hideForm();

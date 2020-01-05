@@ -4,7 +4,6 @@
   <meta charset="UTF-8"/>
   <title>BlogWorld</title>
   <link rel="stylesheet" href="css/main.css"/>
-  <script src="js/renderNewPost.js"></script>
 
 </head>
 <body>
@@ -16,6 +15,7 @@
         <a href="index.html" class="logo__link">
           <p class="logo__text">BlogWorld</p>
         </a>
+        <button class="btn btn--primary btn--create-post">Create new post</button>
       </div>
 
       <nav class="nav-page">
@@ -68,9 +68,51 @@
   </div>
 </footer>
 
+<div class="create-post-form">
+  <form id="createPostForm" class="contact__form create-post-form__item">
+    <label class="form__input-wrap" for="postType">
+      <span class="form__input-title">Type of post</span>
+      <select class="form__input" type="text" id="postType">
+        <option>video</option>
+        <option>image</option>
+        <option>text</option>
+        <option>music</option>
+      </select>
+    </label>
+    <label class="form__input-wrap" for="postImage">
+    <span class="form__input-title">Image link</span>
+    <input required class="form__input" type="url" id="postImage">
+    </label>
+    <label class="form__input-wrap" for="postTitle">
+      <span class="form__input-title">Title</span>
+      <div class="alert">
+        <span class="closebtn"></span>
+        <strong>Error!!</strong><br>Title should start with an uppercase letter;<br>Be more than 2 and less than 20 characters;<br>Title can contain only theese special characters: " ' !:-?.,`'";
+      </div>
+      <input required class="form__input" type="text" id="postTitle">
+    </label>
+    <label class="form__input-wrap" for="postAuthor">
+      <span class="form__input-title">Author</span>
+      <input required class="form__input" type="text" id="postAuthor">
+    </label>
+    <label class="form__input-wrap" for="postDescription">
+      <span class="form__input-title">Description</span>
+      <textarea required class="form__input" type="text" id="postDescription"></textarea>
+    </label>
+    <label class="form__input-wrap" for="postQuote">
+      <span class="form__input-title">Quote</span>
+      <textarea required class="form__input" type="text" id="postQuote"></textarea>
+    </label>
+    <button class="form__btn btn btn--primary">Send message</button>
+  </form>
+</div>
+
+<script src='js/validate.js' defer></script>
 <script src="js/data.js" defer></script>
 <script src="js/utils.js" defer></script>
 <script src="js/blogPage.js" defer></script>
+<script src="js/renderPostsFromServer.js" defer></script>
+<script src="js/addPost.js" defer></script>
 </body>
 </html>
 

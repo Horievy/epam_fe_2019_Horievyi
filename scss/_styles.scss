@@ -73,6 +73,10 @@ a:active {
     margin-right: 0;
     float: right;
   }
+
+  &--create-post {
+    margin-left: 20px;
+  }
 }
 
 .header {
@@ -1075,6 +1079,10 @@ a:active {
     font: $postAuthorName;
   }
 
+  &__picture {
+    max-width: 560px;
+  }
+
   &__heading {
     &--post-page {
       margin-bottom: 26px;
@@ -1133,11 +1141,13 @@ a:active {
     }
   }
 
+  &__text-wrap {
+    margin-top: 20px;
+  }
+
   &__folder {
     width: 560px;
     height: 100%;
-    -webkit-background-size: cover;
-    background-size: cover;
 
     &--main-page {
       height: 245px;
@@ -1149,15 +1159,6 @@ a:active {
       height: 50px;
       background-color: #fff;
     }
-    //
-    //&--post-page {
-    //  //height: 485px;
-    //  //  background: url("../img/coffee.jpg") no-repeat;
-    //}
-
-    &--image {
-      background: url("../img/Image-post3.png") no-repeat;
-    }
 
     &--video {
       position: relative;
@@ -1165,10 +1166,6 @@ a:active {
       &::after {
         @include player-icon();
       }
-    }
-
-    &--music {
-      background: url("../img/Imgage-post2.png") no-repeat;
     }
   }
 
@@ -1227,6 +1224,12 @@ a:active {
     }
   }
 
+  &__image {
+    width: 560px;
+    height: 100%;
+    border-radius: 5px;
+  }
+
   &__line {
     margin: 17px 0;
 
@@ -1273,7 +1276,7 @@ a:active {
     &--post-page {
       width: 300px;
       height: 54px;
-      margin: 17px 0 7px;
+      margin: 0;
     }
   }
 
@@ -1667,5 +1670,60 @@ a:active {
 
     text-align: center;
     margin-bottom: 80px;
+  }
+}
+
+.alert {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  background-color: #f44336;
+  color: white;
+  display: none;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.create-post-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+
+  &__item {
+    position: fixed;
+    width: 300px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 15px;
+    z-index: 10;
+    color: #ccc;
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    input {
+      height: 30px;
+    }
   }
 }

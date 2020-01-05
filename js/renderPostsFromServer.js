@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (xhr.status === 200) {
       const data = JSON.parse(xhr.responseText);
-      const currentPostId = localStorage.getItem('currentPostId');
-      createPost(data.find((elem) => {
-        return elem.id === +currentPostId;
-      }));
+      const createdPosts = data.map((post) => {
+        return createPost(post);
+      });
 
-      const postsOnPage = document.querySelectorAll('.post--pages');
-
-      postsOnPage[0].before(postsOnPage[1]);
-      postsOnPage[0].remove();
+      initialize(main,
+        createBlogPageHeading(),
+        createBlogPageSearchSection(),
+        createdPosts,
+        createReadMoreSection());
     } else {
       // eslint-disable-next-line no-console
       console.log(`${xhr.status} : ${xhr.statusText}`);

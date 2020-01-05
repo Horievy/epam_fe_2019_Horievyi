@@ -1,8 +1,10 @@
+/* eslint-disable max-lines */
+/* eslint-disable no-undef */
 const main = document.querySelector('main');
 const mainBootstrapWrap = makeBootstrapWrap();
 
 const createPost = (post) => {
-  const itemFragment = document.createDocumentFragment();
+  // const itemFragment = document.createDocumentFragment();
   const mainSection = createElement('section', 'post post-image post-page post--pages');
   const postWrap = createElement('div', 'post__item post__item--image post__item--post-page');
 
@@ -10,10 +12,9 @@ const createPost = (post) => {
   const postAuthorWrap = createElement('div', 'post__author post__author--post-page post__author--music');
   const postAuthorName = createElement('span', 'post__author-name', post.authorName);
 
-  const infoBlock = createInfoBlock(post, null);
+  const infoBlock = createInfoBlock(post);
 
-  itemFragment
-    .appendChild(mainBootstrapWrap).firstChild
+  mainBootstrapWrap.firstChild
     .appendChild(mainSection)
     .appendChild(postWrap)
     .appendChild(postHeading);
@@ -91,7 +92,7 @@ const createPost = (post) => {
   };
   createPostContent();
 
-  return itemFragment;
+  return mainBootstrapWrap;
 };
 
 const createSidebar = () => {
@@ -118,7 +119,7 @@ const createSidebar = () => {
       .appendChild(latestPostsWrapper)
       .appendChild(latestPostsTitle);
 
-    postPage.recent.items.forEach((item, index) => {
+    postPage.recent.items.forEach((item) => {
       const recentItem = createElement('div', 'recent__item');
       const recentItemPicture = createElement(
         'img',
@@ -133,7 +134,7 @@ const createSidebar = () => {
         item.title,
         'href',
         '#');
-      const infoBlock = createInfoBlock(postPage.recent.items, index);
+      const infoBlock = createInfoBlock(item);
 
       recentItem
         .appendChild(recentItemPicture)
@@ -338,8 +339,8 @@ const createFeedbackSection = () => {
   return feedbackBootstrapWrap;
 };
 
-main.appendChild(createPost(postPage.post));
-main.appendChild(createSidebar());
-main.appendChild(createTotalSection());
-main.appendChild(createFeedbackSection());
-
+initialize(main,
+  createPost(postPage.post),
+  createSidebar(),
+  createTotalSection(),
+  createFeedbackSection());

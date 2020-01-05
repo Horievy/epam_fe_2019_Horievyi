@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const main = document.querySelector('main');
 
-function createPost(postType, index) {
+function createPost(post) {
   const itemFragment = document.createDocumentFragment();
-  const itemMainWrap = createElement('section', `post post--${postType}`);
+  const itemMainWrap = createElement('section', `post post--${post.postType}`);
   const bootstrapWrap = makeBootstrapWrap();
   const postWrap = createElement('div', 'post__wrap post__wrap--blog-page');
 
@@ -11,13 +13,13 @@ function createPost(postType, index) {
     .appendChild(bootstrapWrap);
 
   function createPostImageFolder() {
-    const postItem = createElement('div', `post__item post__item--${postType}`);
-    if (blog.posts[index].imgLink) {
-      const postFolder = createElement('div', `post__folder post__folder--${postType}`);
+    const postItem = createElement('div', `post__item post__item--${post.postType}`);
+    if (post.imgLink) {
+      const postFolder = createElement('div', `post__folder post__folder--${post.postType}`);
       const postImg = createElement('img',
-        `post__image post__image--${postType}`,
+        `post__image post__image--${post.postType}`,
         null, 'src',
-        blog.posts[index].imgLink);
+        post.imgLink);
       postFolder.appendChild(postImg);
 
       bootstrapWrap.firstChild.appendChild(postItem)
@@ -29,34 +31,34 @@ function createPost(postType, index) {
     }
 
     const postIcon = createElement('span',
-      ` post__icon post__icon--${postType}`);
+      ` post__icon post__icon--${post.postType}`);
     postWrap.appendChild(postIcon);
 
     return bootstrapWrap;
   }
 
   function createPostInfo() {
-    const postInfoWrap = postType === 'text'
+    const postInfoWrap = post.postType === 'text'
       ? createElement('div', 'post__info-wrap post__info-wrap--fluid')
       : createElement('div', 'post__info-wrap');
-    const postAuthor = createElement('div', `post__author post__author--${postType}`);
+    const postAuthor = createElement('div', `post__author post__author--${post.postType}`);
     const authorName = createElement('span',
       'post__author-name',
-      blog.posts[index].authorName);
+      post.authorName);
     const postHeading = createElement('h3',
       'post__heading',
-      blog.posts[index].heading);
+      post.heading);
 
-    const infoBlock = createInfoBlock(blog.posts, index);
+    const infoBlock = createInfoBlock(post);
 
     postInfoWrap.appendChild(postAuthor);
     postAuthor.appendChild(authorName);
     postAuthor.appendChild(infoBlock);
 
-    const postText = createElement('p', 'post__text', blog.posts[index].postText);
+    const postText = createElement('p', 'post__text', post.postText);
     const postBtn = createElement('a',
       'btn btn--secondary',
-      blog.posts[index].btnText,
+      post.btnText,
       'href', '#');
 
     postWrap.appendChild(postInfoWrap);
@@ -124,12 +126,6 @@ const createReadMoreSection = () => {
   return itemFragment;
 };
 
-const posts = blog.posts.map((post, index) => {
-  return createPost(post.postType, index);
+const posts = blog.posts.map((post) => {
+  return createPost(post);
 });
-
-initialize(main,
-  createBlogPageHeading(),
-  createBlogPageSearchSection(),
-  posts,
-  createReadMoreSection());

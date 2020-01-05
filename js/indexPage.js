@@ -1,4 +1,5 @@
-// eslint-disable-next-line max-lines
+/* eslint-disable max-lines */
+/* eslint-disable no-undef */
 const main = document.querySelector('main');
 
 const createAboutUsSection = () => {
@@ -93,7 +94,7 @@ const createLatestPosts = () => {
       .appendChild(postsWrap)
       .appendChild(postsBootstrapWrap);
 
-    mainPage.post.posts.forEach((item, index) => {
+    mainPage.post.posts.forEach((item) => {
       const postItem = createElement('div', 'post__item post__item--main-page');
       const postWrap = createElement('div', 'post__wrap post__wrap--main-page');
       const postImg = createElement('img',
@@ -106,7 +107,7 @@ const createLatestPosts = () => {
       const postHeading = createElement('h3', 'post__heading post__heading--main-page');
       const postLink = createElement('a', 'post__link' , `${item.headingText}`);
       const postText = createElement('p', 'post__text post__text--main-page' , `${item.paragraphText}`);
-      const infoBlock = createInfoBlock(mainPage.post.posts, index);
+      const infoBlock = createInfoBlock(item);
 
       postsBootstrapWrap.firstChild
         .appendChild(postItem)
