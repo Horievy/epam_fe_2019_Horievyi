@@ -73,6 +73,10 @@ a:active {
     margin-right: 0;
     float: right;
   }
+
+  &--create-post {
+    margin-left: 20px;
+  }
 }
 
 .header {
@@ -536,6 +540,7 @@ a:active {
       }
     }
   }
+
   &__items {
     @include make-xs-column(12);
 
@@ -598,7 +603,6 @@ a:active {
 
   &__btn-wrap {
     text-align: center;
-    margin-top: 244px;
 
     @include make-xs-column(4);
     @include make-xs-column-push(4);
@@ -727,7 +731,6 @@ a:active {
 }
 
 .person {
-
   &__quote {
     position: relative;
     font: 17px/26px $semiBoldFont;
@@ -1121,6 +1124,10 @@ a:active {
     }
   }
 
+  &__picture {
+    max-width: 560px;
+  }
+
   &__author-name {
     font: $postAuthorName;
   }
@@ -1275,6 +1282,12 @@ a:active {
     &--main-page {
       padding: 20px 25px 30px 25px;
     }
+  }
+
+  &__image {
+    width: 560px;
+    height: 100%;
+    border-radius: 5px;
   }
 
   &__line {
@@ -1659,9 +1672,7 @@ a:active {
       left: 0;
     }
 
-    &--first {
-      background: url("../img/Neil 1.png") no-repeat;
-
+    &:first-child {
       &::before {
         @include pseudo(16px, 16px);
 
@@ -1672,13 +1683,7 @@ a:active {
       }
     }
 
-    &--second {
-      background: url("../img/Sarah 1.png") no-repeat;
-    }
-
-    &--last {
-      background: url("../img/Ann.png") no-repeat;
-
+    &:last-child {
       &::before {
         @include pseudo(16px, 16px);
 
@@ -1692,6 +1697,11 @@ a:active {
         margin-bottom: 0;
       }
     }
+  }
+
+  &__item-author-avatar {
+    position: absolute;
+    left: 0;
   }
 
   &__text {
@@ -1720,5 +1730,60 @@ a:active {
 
     text-align: center;
     margin-bottom: 80px;
+  }
+}
+
+.alert {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  background-color: #f44336;
+  color: white;
+  display: none;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.create-post-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+
+  &__item {
+    position: fixed;
+    width: 300px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 15px;
+    z-index: 10;
+    color: #ccc;
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    input {
+      height: 30px;
+    }
   }
 }

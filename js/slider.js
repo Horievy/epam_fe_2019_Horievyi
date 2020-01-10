@@ -22,7 +22,6 @@ function TestimonalsSlider() {
   this.arrowPrev = document.querySelector('.testimonials__button-left');
 
   Slider.call(this);
-
   this.autoplaySpeed = (speed) => {
     this.speed = speed;
     this.interval();
@@ -69,7 +68,7 @@ function PortfolioSlider() {
 }
 
 const portfolioSlider = new PortfolioSlider();
-portfolioSlider.autoPlay('off');
+portfolioSlider.autoPlay('on');
 portfolioSlider.showButtons('off');
 const testimonalsSlider = new TestimonalsSlider();
 testimonalsSlider.transitionSpeed('2s');
