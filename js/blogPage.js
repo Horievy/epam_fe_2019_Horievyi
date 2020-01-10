@@ -37,6 +37,7 @@ function createPost(post) {
     return bootstrapWrap;
   }
 
+  // eslint-disable-next-line max-statements
   function createPostInfo() {
     const postInfoWrap = post.postType === 'text'
       ? createElement('div', 'post__info-wrap post__info-wrap--fluid')
@@ -64,7 +65,13 @@ function createPost(post) {
     postWrap.appendChild(postInfoWrap);
 
     const textFrags = [postHeading, postText, postBtn];
+
     appendAll(textFrags, postInfoWrap);
+
+    if (post.postType === 'music') {
+      const postAudio = createElement('audio', 'post__audio', null, 'controls', ' ');
+      postHeading.after(postAudio);
+    }
 
     return postWrap;
   }
@@ -126,6 +133,3 @@ const createReadMoreSection = () => {
   return itemFragment;
 };
 
-const posts = blog.posts.map((post) => {
-  return createPost(post);
-});

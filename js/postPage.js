@@ -339,8 +339,19 @@ const createFeedbackSection = () => {
   return feedbackBootstrapWrap;
 };
 
+class Post {
+  constructor(post) {
+    this.post = post;
+  }
+
+  createPost = function () {
+    return createPost(this.post);
+  }
+}
+
+const newPost = new Post(postPage.post);
 initialize(main,
-  createPost(postPage.post),
+  newPost.createPost(),
   createSidebar(),
   createTotalSection(),
   createFeedbackSection());
