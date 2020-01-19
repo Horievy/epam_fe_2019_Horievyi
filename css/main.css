@@ -1632,6 +1632,8 @@ a:active {
     padding-left: 20px;
     overflow: hidden;
     min-height: 244px; }
+  .portfolio__items-wrap {
+    min-height: 244px; }
   .portfolio__item {
     padding: 0 20px;
     width: 400px;

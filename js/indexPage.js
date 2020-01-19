@@ -136,6 +136,7 @@ const createPortfolioSection = () => {
   const portfolioFragment = document.createDocumentFragment();
   const portfolioBootstrapWrap = makeBootstrapWrap();
   const portfolioSection = createElement('section', 'portfolio');
+  const portfolioItems = createElement('div', 'portfolio__items');
 
   const createTitle = () => {
     const portfolioTitle = createManiHeading('portfolio__title-wrap', 'portfolio__title heading-main', `${mainPage.portfolio.title}`);
@@ -151,8 +152,7 @@ const createPortfolioSection = () => {
   };
 
   const createPortfolioItems = () => {
-    const portfolioItems = createElement('div', 'portfolio__items');
-    const portfolioItemsWrap = createElement('div', 'portfolio__items-wrap');
+    const portfolioItemsWrap = createElement('div', 'portfolio__items-wrap slider');
 
     mainPage.portfolio.items.forEach((item) => {
       const portfolioItem = createElement('div', 'portfolio__item');
@@ -203,8 +203,8 @@ const createPortfolioSection = () => {
   const createPortfolioButtons = () => {
     const portfolioBtnWrap = createElement('div', 'portfolio__btn-wrap');
     const portfolioMenuControl = createElement('div', 'portfolio__menu-control');
-    const portfolioBtnLeft = createElement('button', 'menu-btn');
-    const portfolioBtnRight = createElement('button', 'menu-btn menu-btn--right');
+    const portfolioBtnLeft = createElement('button', 'menu-btn slider__btn-left');
+    const portfolioBtnRight = createElement('button', 'menu-btn menu-btn--right slider__btn-right');
     const portfolioBtnExpandAll = createElement('a',
       'portfolio__btn btn btn--secondary',
       `${mainPage.portfolio.btnText}`,
@@ -216,7 +216,7 @@ const createPortfolioSection = () => {
       .appendChild(portfolioBtnLeft)
       .after(portfolioBtnRight);
     portfolioBtnWrap.appendChild(portfolioBtnExpandAll);
-    portfolioBootstrapWrap.firstChild.appendChild(portfolioBtnWrap);
+    portfolioItems.appendChild(portfolioBtnWrap);
 
     return portfolioBootstrapWrap;
   };
@@ -246,7 +246,7 @@ const createTestimonialsSection = () => {
 
   const createPersonBlock = () => {
     const testimonialsPersonWrap = createElement('div', 'testimonials__person-wrap');
-    const testimonalsSlider = createElement('div', 'testimonials__slider');
+    const testimonalsSlider = createElement('div', 'testimonials__slider slider');
 
     mainPage.testimonials.persons.forEach((item) => {
       const testimonialsPerson = createElement('div', 'testimonials__person person');
@@ -277,8 +277,8 @@ const createTestimonialsSection = () => {
       testimonialsPerson.appendChild(testimonialsPersonImage);
     });
 
-    const testimonialsBtnLeft = createElement('button', 'testimonials__button-left menu-btn');
-    const testimonialsBtnRight = createElement('button', 'testimonials__button-right menu-btn menu-btn--right');
+    const testimonialsBtnLeft = createElement('button', 'testimonials__button-left menu-btn slider__btn-left');
+    const testimonialsBtnRight = createElement('button', 'testimonials__button-right menu-btn menu-btn--right slider__btn-right');
 
     testimonialsPersonWrap
       .appendChild(testimonialsBtnLeft)

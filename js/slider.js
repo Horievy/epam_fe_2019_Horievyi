@@ -1,11 +1,12 @@
 function Slider(config) {
-  const {sliderWrapper, time} = config;
-  this.slider = sliderWrapper.querySelector('.testimonials__slider');
-  this.arrowNext = sliderWrapper.querySelector('.testimonials__button-right');
-  this.arrowPrev = sliderWrapper.querySelector('.testimonials__button-left');
+  const {sliderWrapper, slideInterval} = config;
+  this.slider = sliderWrapper.querySelector('.slider');
+  this.arrowNext = sliderWrapper.querySelector('.slider__btn-right');
+  this.arrowPrev = sliderWrapper.querySelector('.slider__btn-left');
 
-  this.speed = time || 1500;
+  this.speed = slideInterval || 1500;
   this.next = () => this.slider.appendChild(this.slider.firstElementChild);
+  this.prev = () => this.slider.prepend(this.slider.lastElementChild);
   this.prev = () => this.slider.prepend(this.slider.lastElementChild);
   this.arrowNext.addEventListener('click', this.next);
   this.arrowPrev.addEventListener('click', this.prev);
@@ -21,68 +22,58 @@ function Slider(config) {
   });
 }
 
-const testimonalsSlider1 = {
-  sliderWrapper: document.querySelector('.testimonials__person-wrap'),
-  time: 2500,
-  state: 'off'
+const portfolioSliderConfig = {
+  sliderWrapper: document.querySelector('.portfolio__items'),
+  btnState: 'off',
+  autoPlay: 'on',
 };
 
-// const test = new Slider(testimonalsSlider1);
-//
-// function TestimonalsSlider() {
-//   this.slider = document.querySelector('.testimonials__slider');
-//   this.sliderWrapper = document.querySelector('.testimonials__person-wrap');
-//   this.arrowNext = document.querySelector('.testimonials__button-right');
-//   this.arrowPrev = document.querySelector('.testimonials__button-left');
-//
-//   Slider.call(this);
-//   this.autoplaySpeed = (speed) => {
-//     this.speed = speed;
-//     this.interval();
-//   };
-//
-//   this.transitionSpeed = (speed) => {
-//     [].forEach.call(this.slider.children, (item) => {
-//       item.style.transition = speed;
-//     });
-//   };
-// }
+const testimonialsSliderConfig = {
+  sliderWrapper: document.querySelector('.testimonials__person-wrap'),
+  slideInterval: 1000,
+  animationSpeed: '1s',
+};
+
+function TestimonialsSlider(config) {
+  const {sliderWrapper, animationSpeed} = config;
+  Slider.call(this, config);
+  const slides = sliderWrapper.querySelectorAll('.testimonials__person');
+
+  slides.forEach((slide) => {
+    slide.style.transition = animationSpeed || '0.5s';
+  });
+}
 
 function PortfolioSlider(config) {
-  const {state} = config;
+  const {btnState, autoPlay, sliderWrapper} = config;
   Slider.call(this, config);
-  // this.autoPlay = (state = 'on') => {
-  //   if (state === 'on') {
-  //     this.timer = this.interval();
-  //   } else if (state === 'off') {
-  //     this.sliderWrapper.addEventListener('mouseleave', () => {
-  //       clearInterval(this.timer);
-  //     });
-  //     clearInterval(this.timer);
-  //   } else {
-  //     throw new Error('Wrong input data');
-  //   }
-  // };
-  // this.autoPlay(state);
 
-  this.showButtons = (state = 'on') => {
-    if (state === 'on') {
+  this.autoPlay = (autoPlay = 'on') => {
+    if (autoPlay === 'off') {
+      sliderWrapper.addEventListener('mouseleave', () => {
+        clearInterval(this.timer);
+      });
+      clearInterval(this.timer);
+    }
+  };
+  this.autoPlay(autoPlay);
+
+  this.showButtons = (btnState = 'on') => {
+    if (btnState === 'on') {
       this.arrowNext.style.display = 'block';
       this.arrowPrev.style.display = 'block';
-    } else if (state === 'off') {
+    } else if (btnState === 'off') {
       this.arrowNext.style.display = 'none';
       this.arrowPrev.style.display = 'none';
     } else {
       throw new Error('Wrong input data');
     }
   };
-  this.showButtons(state);
+  this.showButtons(btnState);
 }
 
-const portfolioSlider = new PortfolioSlider(testimonalsSlider1);
-// portfolioSlider.autoPlay('on');
-// portfolioSlider.showButtons('off');
-// const testimonalsSlider = new TestimonalsSlider();
-// testimonalsSlider.transitionSpeed('2s');
-// testimonalsSlider.autoplaySpeed(3000);
-//
+// eslint-disable-next-line no-unused-vars
+const portfolioSlider = new PortfolioSlider(portfolioSliderConfig);
+// eslint-disable-next-line no-unused-vars
+const testimonialsSlider = new TestimonialsSlider(testimonialsSliderConfig);
+
