@@ -17,25 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (xhr.status === 200) {
       const data = JSON.parse(xhr.responseText);
 
-      class Post {
-        constructor(posts) {
-          this.posts = posts;
+      const createdPosts = data.map((post) => {
+        switch (post.postType) {
+          case 'video':
+            return new VideoPost(post).createPost();
+          case 'music':
+            return new MusicPost(post).createPost();
+          case 'image':
+            return new ImagePost(post).createPost();
+          default:
+            return new Post(post).createPost();
         }
-
-        createPost = function () {
-          const post = this.posts.map((post) => {
-            return createPost(post);
-          });
-          return post;
-        }
-      }
-
-      const newPost = new Post(data);
+      });
 
       initialize(main,
         createBlogPageHeading(),
         createBlogPageSearchSection(),
-        newPost.createPost(),
+        createdPosts,
         createReadMoreSection());
     } else {
       // eslint-disable-next-line no-console

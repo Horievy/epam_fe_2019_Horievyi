@@ -548,6 +548,10 @@ a:active {
     min-height: 244px;
   }
 
+  &__items-wrap {
+    min-height: 244px;
+  }
+
   &__item {
     padding: 0 20px;
     width: 400px;
@@ -1212,20 +1216,17 @@ a:active {
     //  //  background: url("../img/coffee.jpg") no-repeat;
     //}
 
-    &--image {
-      background: url("../img/Image-post3.png") no-repeat;
-    }
-
     &--video {
       position: relative;
 
-      &::after {
+      &-icon {
         @include player-icon();
-      }
-    }
 
-    &--music {
-      background: url("../img/Imgage-post2.png") no-repeat;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+      }
     }
   }
 
@@ -1266,14 +1267,8 @@ a:active {
   }
 
   &__info-wrap {
-    width: 598px;
     box-sizing: border-box;
     padding: 28px 38px;
-
-    &--fluid {
-      width: 100%;
-      padding: 28px 27px;
-    }
 
     &--post-page {
       padding: 30px 36px;

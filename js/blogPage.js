@@ -14,21 +14,10 @@ function createPost(post) {
 
   function createPostImageFolder() {
     const postItem = createElement('div', `post__item post__item--${post.postType}`);
-    if (post.imgLink) {
-      const postFolder = createElement('div', `post__folder post__folder--${post.postType}`);
-      const postImg = createElement('img',
-        `post__image post__image--${post.postType}`,
-        null, 'src',
-        post.imgLink);
-      postFolder.appendChild(postImg);
 
-      bootstrapWrap.firstChild.appendChild(postItem)
-        .appendChild(postWrap)
-        .appendChild(postFolder);
-    } else {
-      bootstrapWrap.firstChild.appendChild(postItem)
-        .appendChild(postWrap);
-    }
+    bootstrapWrap.firstChild
+      .appendChild(postItem)
+      .appendChild(postWrap);
 
     const postIcon = createElement('span',
       ` post__icon post__icon--${post.postType}`);
@@ -37,7 +26,6 @@ function createPost(post) {
     return bootstrapWrap;
   }
 
-  // eslint-disable-next-line max-statements
   function createPostInfo() {
     const postInfoWrap = post.postType === 'text'
       ? createElement('div', 'post__info-wrap post__info-wrap--fluid')
@@ -67,11 +55,6 @@ function createPost(post) {
     const textFrags = [postHeading, postText, postBtn];
 
     appendAll(textFrags, postInfoWrap);
-
-    if (post.postType === 'music') {
-      const postAudio = createElement('audio', 'post__audio', null, 'controls', ' ');
-      postHeading.after(postAudio);
-    }
 
     return postWrap;
   }
@@ -132,4 +115,62 @@ const createReadMoreSection = () => {
 
   return itemFragment;
 };
+
+class Post {
+  constructor(post) {
+    this.post = post;
+  }
+
+  createPost() {
+    return createPost(this.post);
+  }
+}
+
+class ImagePost extends Post {
+  createPost() {
+    const imagePost = super.createPost();
+    const bootstrapWrap = imagePost.querySelector('.row');
+    const postItem = imagePost.querySelector('.post__item');
+    const postWrap = imagePost.querySelector('.post__wrap');
+
+    const postFolder = createElement('div', `post__folder post__folder--${this.post.postType}`);
+    const postImg = createElement('img',
+      `post__image post__image--${this.post.postType}`,
+      null, 'src',
+      this.post.imgLink);
+    postFolder.appendChild(postImg);
+
+    bootstrapWrap
+      .appendChild(postItem)
+      .prepend(postWrap);
+
+    postWrap.prepend(postFolder);
+
+    return imagePost;
+  }
+}
+
+class MusicPost extends ImagePost {
+  createPost() {
+    const musicPost = super.createPost();
+
+    const postHeading = musicPost.querySelector('.post__heading');
+    const postAudio = createElement('audio', 'post__audio', null, 'controls', ' ');
+    postHeading.after(postAudio);
+
+    return musicPost;
+  }
+}
+
+class VideoPost extends ImagePost {
+  createPost() {
+    const videoPost = super.createPost();
+    const postFolder = videoPost.querySelector('.post__folder');
+    const videoIcon = createElement('div', 'post__folder--video-icon');
+
+    postFolder.appendChild(videoIcon);
+
+    return videoPost;
+  }
+}
 

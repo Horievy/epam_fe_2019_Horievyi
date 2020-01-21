@@ -2,7 +2,7 @@
   {
       "postType": "video",
       "imgLink": "img/Imgage-post1.png",
-      "heading": "In the Future We Will All Live in Star Wars",
+      "heading": "Second video post",
       "authorName": "Neil Richards",
       "infoBlock": {
         "date": "02 oct, 2019",
@@ -12,6 +12,19 @@
       "postText": "The thing you’re doing now, reading prose on a screen, is going out of fashion. The defining narrative of our online moment concerns the decline of text, and the exploding reach and power of audio and video …",
       "btnText": "Read more"
     },
+  {
+    "postType": "video",
+    "imgLink": "img/Imgage-post1.png",
+    "heading": "In the Future We Will All Live in Star Wars",
+    "authorName": "Neil Richards",
+    "infoBlock": {
+      "date": "02 oct, 2019",
+      "read-time": "12 min read",
+      "comments": "4"
+    },
+    "postText": "The thing you’re doing now, reading prose on a screen, is going out of fashion. The defining narrative of our online moment concerns the decline of text, and the exploding reach and power of audio and video …",
+    "btnText": "Read more"
+  },
     {
       "postType": "music",
       "imgLink": "img/Imgage-post2.png",

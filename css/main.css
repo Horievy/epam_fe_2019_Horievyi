@@ -1632,6 +1632,8 @@ a:active {
     padding-left: 20px;
     overflow: hidden;
     min-height: 244px; }
+  .portfolio__items-wrap {
+    min-height: 244px; }
   .portfolio__item {
     padding: 0 20px;
     width: 400px;
@@ -2147,11 +2149,9 @@ a:active {
     .post__folder--small {
       height: 50px;
       background-color: #fff; }
-    .post__folder--image {
-      background: url("../img/Image-post3.png") no-repeat; }
     .post__folder--video {
       position: relative; }
-      .post__folder--video::after {
+      .post__folder--video-icon {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -2161,8 +2161,9 @@ a:active {
         display: block;
         width: 72px;
         height: 72px; }
-    .post__folder--music {
-      background: url("../img/Imgage-post2.png") no-repeat; }
+        .post__folder--video-icon:hover {
+          cursor: pointer;
+          opacity: 0.8; }
   .post__icon {
     position: absolute;
     width: 84px;
@@ -2190,12 +2191,8 @@ a:active {
     .post__icon--text::after {
       background-image: url(../img/a-icon-text.svg); }
   .post__info-wrap {
-    width: 598px;
     box-sizing: border-box;
     padding: 28px 38px; }
-    .post__info-wrap--fluid {
-      width: 100%;
-      padding: 28px 27px; }
     .post__info-wrap--post-page {
       padding: 30px 36px; }
     .post__info-wrap--main-page {
