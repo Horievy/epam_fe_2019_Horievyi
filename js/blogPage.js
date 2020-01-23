@@ -49,10 +49,13 @@ function createPost(post) {
       'btn btn--secondary',
       post.btnText,
       'href', '#');
+    const postDeleteBtn = createElement('button',
+      'btn btn--secondary btn---delete-post',
+      'Delete Post');
 
     postWrap.appendChild(postInfoWrap);
 
-    const textFrags = [postHeading, postText, postBtn];
+    const textFrags = [postHeading, postText, postBtn, postDeleteBtn];
 
     appendAll(textFrags, postInfoWrap);
 
@@ -173,4 +176,3 @@ class VideoPost extends ImagePost {
     return videoPost;
   }
 }
-
