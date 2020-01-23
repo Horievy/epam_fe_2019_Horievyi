@@ -14,13 +14,15 @@ $.fn.modalBox = function (prop) {
     addOverlay();
     addPopupBox();
     addStyles();
+    closePopupBox();
   }
 
-  return this.click(() => {
+  this.click(() => {
     addBlockPage();
     addOverlay();
     addPopupBox();
     addStyles();
+    closePopupBox();
   });
 
   function addStyles() {
@@ -77,7 +79,14 @@ $.fn.modalBox = function (prop) {
     const popUp = $(`<div class="modal-box"><a href="#" class="modal-close-icon modal-close"></a><h2> ${options.title}</h2><p> ${options.description} </p></div>`);
     $(popUp).appendTo('.block-page');
     $(popupButton).appendTo('.modal-box');
+  }
 
+  function closePopupBox() {
     $('.modal-close').click(() => $('.block-page').remove());
+    $('body').keydown((e) => {
+      if (e.which === 27) {
+        $('.block-page').remove();
+      }
+    });
   }
 };
