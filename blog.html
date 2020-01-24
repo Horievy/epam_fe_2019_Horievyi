@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>BlogWorld</title>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<header class="header header--secondary">
+
+  <div class="container">
+    <div class="row">
+      <div class="logo header__logo">
+        <a href="index.html" class="logo__link">
+          <p class="logo__text">BlogWorld</p>
+        </a>
+        <button class="btn btn--primary btn--create-post">Create new post</button>
+      </div>
+
+      <nav class="nav-page">
+        <ul class="nav-page__list">
+          <li class="nav-page__item"><a href="index.html"
+                                        class="nav-page__link">Home</a></li>
+          <li class="nav-page__item"><a href="#" class="nav-page__link">Portfolio</a>
+          </li>
+          <li class="nav-page__item"><a href="blog.html" class="nav-page__link">Blog</a>
+          </li>
+          <li class="nav-page__item"><a href="#"
+                                        class="nav-page__link">Pages</a></li>
+          <li class="nav-page__item"><a href="#"
+                                        class="nav-page__link">About</a></li>
+          <li class="nav-page__item"><a href="#"
+                                        class="nav-page__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</header>
+
+<main class="main">
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer__soc follow-links">
+        <ul class="follow-links__wrap">
+          <li class="follow-links__item"><a href="#"
+                                            class="follow-links__fb"></a></li>
+          <li class="follow-links__item"><a href="#"
+                                            class="follow-links__inst"></a></li>
+          <li class="follow-links__item"><a href="#"
+                                            class="follow-links__drib"></a></li>
+        </ul>
+      </div>
+      <div class="footer__logo logo">
+        <a href="index.html" class="logo__link">
+          <p class="logo__text">BlogWorld</p>
+        </a>
+      </div>
+      <div class="footer__copyright">
+        <p class="footer__copyright-text">©2019 All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="create-post-form">
+  <form id="createPostForm" class="contact__form create-post-form__item">
+    <label class="form__input-wrap" for="postType">
+      <span class="form__input-title">Type of post</span>
+      <select class="form__input" type="text" id="postType">
+        <option>video</option>
+        <option>image</option>
+        <option>text</option>
+        <option>music</option>
+      </select>
+    </label>
+    <label class="form__input-wrap" for="postImage">
+      <span class="form__input-title">Image link</span>
+      <input required class="form__input" type="url" id="postImage">
+    </label>
+    <label class="form__input-wrap" for="postTitle">
+      <span class="form__input-title">Title</span>
+      <div class="alert">
+        <span class="closebtn">&times;</span>
+        <strong>Error!!</strong><br>Title should start with an uppercase letter;<br>Be more than 2 and less than 20 characters;<br>Title can contain only theese special characters: " ' !:-?.,`'";
+      </div>
+      <input required class="form__input" type="text" id="postTitle">
+    </label>
+    <label class="form__input-wrap" for="postAuthor">
+      <span class="form__input-title">Author</span>
+      <input required class="form__input" type="text" id="postAuthor">
+    </label>
+    <label class="form__input-wrap" for="postDescription">
+      <span class="form__input-title">Description</span>
+      <textarea required class="form__input" type="text" id="postDescription"></textarea>
+    </label>
+    <label class="form__input-wrap" for="postQuote">
+      <span class="form__input-title">Quote</span>
+      <textarea required class="form__input" type="text" id="postQuote"></textarea>
+    </label>
+    <button class="form__btn btn btn--primary">Send message</button>
+  </form>
+</div>
+
+<script src='js/jquery.js' defer></script>
+<script src='js/myModalPlugin.js' defer></script>
+<script src='js/validate.js' defer></script>
+<script src='js/data.js' defer></script>
+<script src='js/utils.js' defer></script>
+<script src='js/blogPage.js' defer></script>
+<script src='js/addPost.js' defer></script>
+<script src='js/renderPostsFromServer.js' defer></script>
+</body>
+</html>
+
