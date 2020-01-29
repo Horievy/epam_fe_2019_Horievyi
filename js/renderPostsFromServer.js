@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const LIST_OF_POSTS_URL = 'http://localhost:3000/api/list';
+const LIST_OF_POSTS_URL = 'http://localhost:3000/api/articles';
 
 const xhr = new XMLHttpRequest();
 
