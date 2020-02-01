@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 document.addEventListener('DOMContentLoaded', () => {
-  const LIST_OF_POSTS_URL = 'http://localhost:3000/api/list';
+  const LIST_OF_POSTS_URL = 'http://localhost:3000/api/articles';
 
   const xhr = new XMLHttpRequest();
 
