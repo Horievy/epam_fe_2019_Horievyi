@@ -1,9 +1,11 @@
 /* eslint-disable max-lines */
 /* eslint-disable no-undef */
+import {initialize, makeBootstrapWrap, createElement, createInfoBlock} from './utils.js';
+import {postPage} from './data.js';
 const main = document.querySelector('main');
 const mainBootstrapWrap = makeBootstrapWrap();
 
-const createPost = (post) => {
+export const createPost = (post) => {
   // const itemFragment = document.createDocumentFragment();
   const mainSection = createElement('section', 'post post-image post-page post--pages');
   const postWrap = createElement('div', 'post__item post__item--image post__item--post-page');
@@ -344,7 +346,7 @@ class Post {
     this.post = post;
   }
 
-  createPost = function () {
+  createPost() {
     return createPost(this.post);
   }
 }

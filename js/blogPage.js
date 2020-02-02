@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const main = document.querySelector('main');
+import {makeBootstrapWrap, createElement, createManiHeading, setMultiAttributes, createInfoBlock, appendAll} from './utils.js';
+export const main = document.querySelector('main');
 
 function createPost(post) {
   const itemFragment = document.createDocumentFragment();
@@ -67,7 +68,7 @@ function createPost(post) {
   return itemFragment;
 }
 
-const createBlogPageHeading = () => {
+export const createBlogPageHeading = () => {
   const itemFragment = document.createDocumentFragment();
 
   const blogHeadingBootstrapWrap = makeBootstrapWrap();
@@ -80,7 +81,7 @@ const createBlogPageHeading = () => {
   return itemFragment;
 };
 
-const createBlogPageSearchSection = () => {
+export const createBlogPageSearchSection = () => {
   const itemFragment = document.createDocumentFragment();
 
   const blogSearchBootstrapWrap = makeBootstrapWrap();
@@ -103,7 +104,7 @@ const createBlogPageSearchSection = () => {
   return itemFragment;
 };
 
-const createReadMoreSection = () => {
+export const createReadMoreSection = () => {
   const itemFragment = document.createDocumentFragment();
   const [readMoreBootstrap, readMoreWrap, readMoreBtn] = [
     makeBootstrapWrap(),
@@ -119,7 +120,7 @@ const createReadMoreSection = () => {
   return itemFragment;
 };
 
-class Post {
+export class Post {
   constructor(post) {
     this.post = post;
   }
@@ -129,7 +130,7 @@ class Post {
   }
 }
 
-class ImagePost extends Post {
+export class ImagePost extends Post {
   createPost() {
     const imagePost = super.createPost();
     const bootstrapWrap = imagePost.querySelector('.row');
@@ -153,7 +154,7 @@ class ImagePost extends Post {
   }
 }
 
-class MusicPost extends ImagePost {
+export class MusicPost extends ImagePost {
   createPost() {
     const musicPost = super.createPost();
 
@@ -165,7 +166,7 @@ class MusicPost extends ImagePost {
   }
 }
 
-class VideoPost extends ImagePost {
+export class VideoPost extends ImagePost {
   createPost() {
     const videoPost = super.createPost();
     const postFolder = videoPost.querySelector('.post__folder');

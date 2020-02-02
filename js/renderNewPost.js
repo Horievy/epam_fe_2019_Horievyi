@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import {createPost} from './postPage.js';
 document.addEventListener('DOMContentLoaded', () => {
   const LIST_OF_POSTS_URL = 'http://localhost:3000/api/articles';
 

@@ -20,7 +20,7 @@ function isAppropriateCharachers(title) {
   });
 }
 
-function validate(title) {
+export function validate(title) {
   if (!isString(title) ||
     !validateTitleLength(title) ||
     !isUppercaseLetter(title[0])) {
@@ -29,5 +29,3 @@ function validate(title) {
 
   return isAppropriateCharachers(title);
 }
-
-validate('itle!!');

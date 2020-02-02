@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import {initialize} from './utils.js';
+import {Post, VideoPost, MusicPost, ImagePost, main, createBlogPageHeading, createBlogPageSearchSection, createReadMoreSection} from './blogPage.js';
 const LIST_OF_POSTS_URL = 'http://localhost:3000/api/articles';
 
 const xhr = new XMLHttpRequest();

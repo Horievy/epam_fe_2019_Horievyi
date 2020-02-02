@@ -1,5 +1,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable no-undef */
+import {initialize, makeBootstrapWrap, createElement, createManiHeading, setMultiAttributes, createInfoBlock} from './utils.js';
+import {mainPage} from './data.js';
 const main = document.querySelector('main');
 
 const createAboutUsSection = () => {
@@ -45,7 +47,7 @@ const createAboutUsSection = () => {
       'about-us__video',
       `${mainPage.aboutUs.video.text}`,
       'src',
-      `${mainPage.aboutUs.video.link}`);
+      '#');
 
     setMultiAttributes(video, {
       autoplay: null,

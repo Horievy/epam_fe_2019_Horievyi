@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable no-unused-vars */
 
-const mainPage = {
+export const mainPage = {
   'aboutUs': {
     'title': 'About Us',
     'text': 'This is who we are - or at least who we strive to be...',
@@ -102,19 +102,19 @@ const mainPage = {
       {
         'personName': 'Martin Oda',
         'personRole': 'Product designer',
-        'image': 'img/User-img.png',
+        'image': './img/User-img.png',
         'personQuote': 'We move at a fast pace. I’m always working on something. I am excited about it!',
       },
       {
         'personName': 'Martin Oda',
         'personRole': 'Product desgner',
-        'image': 'img/bg-img1.png',
+        'image': './img/bg-img1.png',
         'personQuote': 'We move at a fast pace. I’m always working on something. I am excited about it!',
       },
       {
         'personName': 'Martin Oda',
         'personRole': 'Product desgner',
-        'image': 'img/bg-img2.png',
+        'image': './img/bg-img2.png',
         'personQuote': 'We move at a fast pace. I’m always working on something. I am excited about it!',
       },
     ],
@@ -167,7 +167,7 @@ const mainPage = {
   },
 };
 
-const postPage = {
+export const postPage = {
   'post': {
     'heading': 'Fog up the river, where it flows among green aits and meadows',
     'imgLink': 'img/PostMainImg.png',

@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import {validate} from './validate.js';
 document.addEventListener('DOMContentLoaded', () => {
   const CREATE_ARTICLE_URL = 'http://localhost:3000/api/create-article';
   const date = new Date();

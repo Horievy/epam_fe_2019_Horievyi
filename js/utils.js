@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line max-params
-const createElement = (tagName, classList, textVal, attrName, attrVal) => {
+export const createElement = (tagName, classList, textVal, attrName, attrVal) => {
   const element = document.createElement(tagName);
   element.className = classList;
 
@@ -15,7 +15,7 @@ const createElement = (tagName, classList, textVal, attrName, attrVal) => {
   return element;
 };
 
-const makeBootstrapWrap = () => {
+export const makeBootstrapWrap = () => {
   const container = createElement('div', 'container');
   const row = createElement('div', 'row');
   container.appendChild(row);
@@ -23,12 +23,12 @@ const makeBootstrapWrap = () => {
   return container;
 };
 
-const appendAll = (array, parentToAppend) =>
+export const appendAll = (array, parentToAppend) =>
   array.forEach((item) => {
     parentToAppend.appendChild(item);
   });
 
-function createInfoBlock(obj) {
+export function createInfoBlock(obj) {
   const infoBlock = createElement('div', 'info-block');
   let currentKey;
 
@@ -42,7 +42,7 @@ function createInfoBlock(obj) {
   return infoBlock;
 }
 
-function createManiHeading(wrapperClass, headingClasses, headingText) {
+export function createManiHeading(wrapperClass, headingClasses, headingText) {
   const headingWrapper = createElement('div', wrapperClass);
   const heading = createElement('h2', headingClasses, headingText);
   const headingUnderline = createElement('span', 'heading-main__underline');
@@ -54,13 +54,13 @@ function createManiHeading(wrapperClass, headingClasses, headingText) {
   return headingWrapper;
 }
 
-function setMultiAttributes(el, attrs) {
+export function setMultiAttributes(el, attrs) {
   for (const key in attrs) {
     el.setAttribute(key, attrs[key]);
   }
 }
 
-function initialize(parentToAppend, ...fragmentsToAppend) {
+export function initialize(parentToAppend, ...fragmentsToAppend) {
   fragmentsToAppend.flat().forEach((fragment) => {
     parentToAppend.appendChild(fragment);
   });
