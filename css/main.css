@@ -303,7 +303,9 @@ template {
 [hidden] {
   display: none; }
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* eslint-disable */
+/* stylelint-disable */
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -2609,5 +2611,42 @@ a:active {
       margin-bottom: 10px; }
     .create-post-form__item input {
       height: 30px; }
+
+.mediator__menu {
+  display: flex;
+  cursor: pointer; }
+  .mediator__menu--aside {
+    flex-direction: column; }
+.mediator__item {
+  padding: 0 20px;
+  font-weight: bold;
+  width: 200px; }
+  .mediator__menu--aside .mediator__item {
+    padding: 5px 20px; }
+.mediator__link {
+  color: #006561; }
+  .mediator__link:hover {
+    color: #008983; }
+.mediator__sub-menu {
+  font-weight: normal;
+  font-style: italic;
+  padding: 5px; }
+  .mediator__sub-menu--disabled {
+    display: none; }
+  .mediator__sub-menu a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    color: #009b95; }
+    .mediator__sub-menu a:hover {
+      color: #00aaa4;
+      font-weight: bold; }
+.mediator__main {
+  display: flex; }
+.mediator__content {
+  padding: 30px;
+  width: 80%; }
 
 /*# sourceMappingURL=main.css.map */
