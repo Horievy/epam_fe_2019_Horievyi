@@ -1,0 +1,25 @@
+<header class="header header--secondary" >
+
+    <div class="container">
+        <div class="row">
+            <div class="logo header__logo">
+                <a [routerLink]="['/courses']" class="logo__link">
+                    <p class="logo__text">Video Courses</p>
+                </a>
+            </div>
+
+            <nav class="nav-page">
+                <ul class="nav-page__list">
+                    <li class="nav-page__item"><a [routerLink]="['/courses']"
+                                                  routerLinkActive="nav-page__link--active"
+                                                  class="nav-page__link">Courses
+                    </a></li>
+                    <li class="nav-page__item"><a [routerLink]="['/about']" routerLinkActive="nav-page__link--active"
+                                                  class="nav-page__link">About
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</header>

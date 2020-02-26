@@ -1,0 +1,94 @@
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "../../../styles/variables";
+@import "../../../styles/colour-matrix";
+@import "../../../styles/mixins";
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+    text-decoration: none;
+}
+
+.header {
+    background-color: $abbey;
+
+    &__logo {
+        @include make-xs-column(7);
+
+        color: #fff;
+        margin-top: 25px;
+    }
+
+    &__wrap {
+        @include make-xs-column(7);
+    }
+
+    &__title {
+        display: inline-block;
+        margin-top: 100px;
+        width: 420px;
+        font: 28px/37px $semiBoldFont;
+    }
+
+    &__text {
+        font: 17px/26px $mainFont;
+        color: $defaultText;
+        margin-top: 22px;
+    }
+
+    &__buttons {
+        margin-top: 22px;
+    }
+
+    &--secondary {
+        height: 80px;
+        margin-bottom: 45px;
+    }
+}
+
+.nav-page {
+    @include make-xs-column(2);
+    @include make-xs-column-offset(3);
+
+    &__list {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        margin-top: 28px;
+    }
+
+    &__link {
+        position: relative;
+        color: $concrete;
+        font: 15px/25px $mainFont;
+
+        &::after {
+            @include pseudo(0, 1px);
+
+            bottom: -5px;
+            right: 0;
+            border-bottom: 1px solid;
+
+            @include transition(linear width 0.3s);
+        }
+
+        &:hover::after {
+            left: 0;
+            width: 100%;
+        }
+
+        &:hover,
+        &:focus {
+            color: $sundown;
+        }
+
+        &--active::after {
+            border-bottom: 1px solid;
+            width: 100%;
+        }
+    }
+}

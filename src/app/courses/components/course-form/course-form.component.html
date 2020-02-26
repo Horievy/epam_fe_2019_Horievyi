@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="post__item post__item--text">
+            <div class="post__wrap post__wrap--blog-page">
+                <div class="contact__form-wrap">
+                    <div class="main__heading-wrap">
+                        <h2 class="heading-main heading-main--blog-page">Courses</h2>
+                    </div>
+
+                    <div class="contact__form form">
+                        <label for="formTitle"
+                               class="form__input-wrap col-xs-12">
+                            <span class="form__input-title">Title</span>
+                            <input type="text" class="form__input"
+                                   id="formTitle"/>
+                        </label>
+                        <label for="formDescription"
+                               class="form__input-wrap col-xs-12">
+                                    <span class="form__input-title">Description
+                                    </span>
+                            <textarea class="form__input"
+                                      id="formDescription"></textarea>
+                        </label>
+                        <label for="formDuration"
+                               class="form__input-wrap col-xs-7">
+                                    <span class="form__input-title">Duration
+                                    </span>
+                            <input required type="number"
+                                   placeholder="0"
+                                   class="form__input"
+                                   id="formDuration"/>
+                        </label>
+                        <label for="formDate"
+                               class="form__input-wrap col-xs-7">
+                                    <span class="form__input-title">Date
+                                    </span>
+                            <input required type="date"
+                                   class="form__input" id="formDate"/>
+                        </label>
+                        <label  for="authors"
+                                class="form__input-wrap col-xs-12">
+                                    <span class="form__input-title">Authors
+                                    </span>
+                            <select class="form__input"
+                                    id="authors">
+                                <option>author1</option>
+                                <option>author2</option>
+                            </select>
+                        </label>
+                        <div class="col-xs-12 btn-wrapper">
+                            <button
+                                    class="form__btn btn btn--primary" [routerLink]="['/courses']">
+                                Cancel</button>
+                            <button
+                                    class="form__btn btn btn--primary">Save</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

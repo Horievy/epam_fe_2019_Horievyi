@@ -1,0 +1,37 @@
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "../../../styles/variables";
+@import "../../../styles/colour-matrix";
+@import "../../../styles/mixins";
+
+.footer {
+    min-width: 1200px;
+    height: 71px;
+    background-color: $abbey;
+
+    &__soc {
+        margin-top: 10px;
+
+        @include make-xs-column(2);
+    }
+
+    &__logo {
+        text-align: center;
+        margin-top: 22px;
+
+        @include make-xs-column(2);
+        @include make-xs-column-offset(3);
+    }
+
+    &__copyright {
+        text-align: right;
+        font: 15px/25px $mainFont;
+        color: $concrete;
+        margin-top: 22px;
+
+        @include make-xs-column(3);
+        @include make-xs-column-offset(2);
+    }
+}

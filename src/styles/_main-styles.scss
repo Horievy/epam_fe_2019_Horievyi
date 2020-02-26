@@ -1,0 +1,435 @@
+$headings: (
+  h1: 28px#{"/"}37px,
+  h2: 24px#{"/"}39px,
+  h3: 20px#{"/"}32px,
+  h4: 17px#{"/"}28px,
+  h5: 15px#{"/"}25px,
+);
+
+@each $heading, $fSize in $headings {
+  #{$heading} {
+    font: 500 $fSize $semiBoldFont;
+  }
+}
+
+body {
+  font: 17px/26px $mainFont;
+  color: $defaultText;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+.btn {
+  box-sizing: border-box;
+  display: inline-block;
+  font: 15px/25px $mainFont;
+  outline: 0;
+  padding: 9px 26px;
+  margin-right: 25px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid $btnMainBgColor;
+
+  @include transition(linear background-color 0.3s);
+
+  &--primary {
+    color: $btnMainColor;
+    background-color: $btnMainBgColor;
+
+    &:hover {
+      color: $btnMainColor;
+      background-color: $btnMainHoverBgColor;
+      border-color: $btnMainHoverBgColor;
+    }
+  }
+
+  &--secondary {
+    color: $btnSecondaryColor;
+    background-color: transparent;
+    border-color: $btnSecondaryColor;
+
+    &:hover {
+      color: $btnSecondaryHoverColor;
+      background-color: $btnSecondaryHoverBgColor;
+      border-color: $btnSecondaryHoverBgColor;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &--blog-page {
+    margin-right: 0;
+  }
+
+  &--latest-post {
+    margin-right: 0;
+    float: right;
+  }
+}
+
+.logo {
+  display: block;
+  text-align: left;
+
+  &__text {
+    color: $concrete;
+    font: 17px/28px $boldFont;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.main {
+  min-width: $container-desktop;
+
+  &__heading-wrap {
+    @include make-xs-column(12);
+
+    text-align: left;
+  }
+}
+
+.heading-main {
+  display: inline-block;
+  font-family: $semiBoldFont;
+
+  &--blog-page {
+    margin-bottom: 30px;
+
+  }
+
+  &__subtitle {
+    //width: 445px;
+    padding: 0 30%;
+  }
+
+  &__underline {
+    position: relative;
+    display: block;
+    height: 8px;
+    border: 1px solid $underlineColor;
+    border-top: none;
+
+    &::before {
+      @include pseudo(4px, 1px);
+
+      left: -4px;
+      top: 0;
+      background-color: $underlineColor;
+    }
+
+    &::after {
+      @include pseudo(4px, 1px);
+
+      right: -4px;
+      top: 0;
+      background-color: $underlineColor;
+    }
+  }
+}
+
+.contact {
+  &__title-wrap {
+    text-align: center;
+    margin-bottom: 124px;
+
+    @include make-xs-column(6);
+    @include make-xs-column-push(3);
+  }
+
+  &__title {
+    position: relative;
+    margin-bottom: 25px;
+  }
+
+  &__title-text {
+    font-size: 17px;
+    line-height: 26px;
+    max-width: 442px;
+    margin: 0 auto;
+  }
+
+  &__body {
+    background-color: $contactSectionBgColor;
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__info {
+    @include make-xs-column(4);
+  }
+
+  &__sub-heading {
+    font: 24px/39px $semiBoldFont;
+    margin-top: 105px;
+    margin-bottom: 40px;
+  }
+
+  &__steps {
+    margin-bottom: 64px;
+  }
+
+  &__step {
+    position: relative;
+    padding-left: 18px;
+
+    &::before {
+      display: block;
+      content: "";
+      width: 1px;
+      top: 15px;
+      bottom: -15px;
+      left: 0;
+      position: absolute;
+      background-color: $contactUsInfoBorderColor;
+    }
+
+    &--last {
+      border: none;
+      padding-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__step-title {
+    font: 15px/26px $boldFont;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 17px;
+      height: 17px;
+      box-sizing: border-box;
+      border: 3px solid $contactPseudoItemsColor;
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      position: absolute;
+      left: -8px;
+      top: 2px;
+      background-color: $white;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      position: absolute;
+      left: -1px;
+      top: 9px;
+      background-color: $contactPseudoItemsColor;
+    }
+  }
+
+  &__li-num {
+    font-family: $mainFont;
+    padding-right: 5px;
+  }
+
+  &__step-text {
+    padding-left: 10px;
+    font-size: 15px;
+    line-height: 26px;
+    margin-top: 5px;
+    padding-bottom: 30px;
+  }
+
+  &__right-block {
+    @include make-xs-column(8);
+  }
+
+  &__form-wrap {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  &__message {
+    flex-basis: 100%;
+    height: 65px;
+    background-color: $contactTopEdgeBgColor;
+  }
+
+  &__form {
+    padding: 30px;
+    width: 100%;
+  }
+
+  &__links {
+    position: absolute;
+    top: -50px;
+  }
+}
+
+.form {
+  &__input-wrap {
+    margin-bottom: 20px;
+    display: block;
+    position: relative;
+  }
+
+  &__input-title {
+    font: 17px/28px $mainFont;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 45px;
+    border: 1px solid $inputBorderColor;
+    border-radius: 5px;
+    padding: 10px;
+    font: 15px/25px $mainFont;
+    margin-top: 10px;
+
+    &:focus,
+    &:active {
+      outline: none;
+      border: 1px solid #4d4949;
+    }
+
+    &--error {
+      border: 1px solid $inputErrorBorderColor;
+
+      &:focus,
+      &:active {
+        border: 1px solid $inputErrorBorderColor;
+      }
+    }
+  }
+
+  &__btn {
+    margin-bottom: 40px;
+  }
+
+  &__annotation {
+    font: 17px/28px $mainFont;
+  }
+
+  &__annotation-link {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      font-family: $boldFont;
+      text-decoration: underline;
+      color: $defaultText;
+    }
+  }
+}
+
+
+
+//===================================BLOG PAGE=======================
+.post {
+  margin-bottom: 50px;
+
+  &__heading {
+    &--post-page {
+      margin-bottom: 26px;
+    }
+
+    &--secondary {
+      padding: 13px 0;
+    }
+  }
+
+  &__item {
+    @include make-xs-column(12);
+  }
+
+  &__wrap {
+    border-radius: 8px;
+    padding: 30px 36px;
+    background-color: $fantasy;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &:hover {
+      @include transition(box-shadow 0.05s);
+
+      box-shadow: 0 70px 25px -65px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__btn-wrap {
+    margin-bottom: 60px;
+  }
+
+  &__info-wrap {
+    width: 70%;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  &__text {
+    padding-top: 20px;
+  }
+}
+
+.add-course {
+  @include make-xs-column(12);
+
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.info-block {
+  position: absolute;
+  right: 0;
+  font-size: 15px;
+  color: $gray;
+
+  &__item {
+    padding-right: 20px;
+  }
+}
+
+.read-more {
+  text-align: center;
+  margin: 10px 0 80px;
+}
+
+.search {
+  @include make-xs-column(12);
+
+  &__wrap {
+    display: flex;
+    margin-bottom: 30px;
+    width: 360px;
+    margin-right: auto;
+    position: relative;
+
+    &::before {
+      @include pseudo(25px, 25px);
+
+      background: url(./img/a-icon-search-3.svg) no-repeat;
+      top: 12px;
+      left: 12px;
+      background-color: #fff;
+    }
+  }
+
+  &__field {
+    padding-left: 40px;
+    margin-right: 15px;
+    margin-top: 0;
+
+    @include placeholder {
+      color: $defaultText;
+    }
+
+    border-color: $black;
+  }
+}

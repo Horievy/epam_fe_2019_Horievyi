@@ -1,9 +1,0 @@
-{
-  "*.js": [
-    "eslint --ext=js  ."
-  ],
-  "*.scss": [
-    "stylelint --syntax=scss"
-  ],
-  "*.html": "htmllint",
-}

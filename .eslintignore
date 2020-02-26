@@ -1,6 +1,0 @@
-dist/
-src/**/styles/
-.idea/
-RD-master/*
-scss/_reset.scss
-js/jquery.js
