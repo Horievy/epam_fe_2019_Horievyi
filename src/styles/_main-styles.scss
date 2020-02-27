@@ -414,7 +414,7 @@ a:active {
     &::before {
       @include pseudo(25px, 25px);
 
-      background: url(./img/a-icon-search-3.svg) no-repeat;
+      background: url(./assets/img/a-icon-search-3.svg) no-repeat;
       top: 12px;
       left: 12px;
       background-color: #fff;
