@@ -13,6 +13,7 @@ import { CourseFormComponent } from './components/course-form/course-form.compon
   imports: [
     CommonModule,
     CoursesRoutingModule
-  ]
+  ],
+  providers: []
 })
 export class CoursesModule { }
