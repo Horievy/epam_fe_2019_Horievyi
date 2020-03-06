@@ -10,7 +10,7 @@ import {CourseModel} from '../../../core/models/courses.model';
   providers : [CoursesService]
 })
 export class CoursesComponent implements OnInit {
-
+  date: Date = new Date();
   courses: CourseModel[];
   constructor(private coursesService: CoursesService) { }
 

@@ -2,11 +2,17 @@
     <div class="container">
         <div class="row">
             <div class="post__item post__item--text">
-                <div class="post__wrap post__wrap--blog-page">
+                <div class="post__wrap post__wrap--blog-page"
+                     appHightlightNewCourse
+                     [creationDate]="course.created">
                     <div class="post__info-wrap">
                         <div class="info-block">
-                            <span class="info-block__date info-block__item">02 oct, 2019</span>
-                            <span class="info-block__read-time info-block__item">12 min read</span>
+                            <span
+                                    class="info-block__date info-block__item"
+
+                             >{{course.created | date}}</span>
+                            <span
+                                    class="info-block__read-time info-block__item">{{course.duration | minutsToHours}}</span>
                         </div>
                         <h3 class="post__heading">{{course.title}}</h3>
                         <p class="post__text">{{course.paragraph}}</p>

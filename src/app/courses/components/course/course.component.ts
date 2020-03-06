@@ -4,7 +4,7 @@ import {CourseModel} from '../../../core/models/courses.model';
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss']
+  styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
 
