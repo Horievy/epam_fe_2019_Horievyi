@@ -14,7 +14,7 @@ export class HightlightNewCourseDirective {
     const timeDifference = dateNow - creationDate;
 
     if (timeDifference > daysToCheck) {
-      this.itemStyle = 'border: 1px solid red';
+      this.itemStyle = 'border: 3px solid red';
     }
   }
 
