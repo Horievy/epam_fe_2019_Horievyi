@@ -15,16 +15,14 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService) { }
 
   ngOnInit(): void {
-    this.coursesService.getCourses().pipe(
-        tap( data => this.courses = data)
+    this.coursesService.loadCourses().subscribe();
+    this.coursesService.courses.pipe(
+        tap(courses => this.courses = courses)
     ).subscribe();
   }
 
   handleDelete(id: number) {
-    this.coursesService.deleteCourse(id).pipe(
-        switchMap(() => this.coursesService.getCourses()),
-        tap(data => this.courses = data)
-    ).subscribe();
+    this.coursesService.deleteCourseById(id).subscribe();
   }
 
 }
