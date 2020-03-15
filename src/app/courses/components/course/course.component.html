@@ -4,21 +4,22 @@
             <div class="post__item post__item--text">
                 <div class="post__wrap post__wrap--blog-page"
                      appHightlightNewCourse
-                     [creationDate]="course.created">
+                     [creationDate]="course.date">
                     <div class="post__info-wrap">
                         <div class="info-block">
                             <span
                                     class="info-block__date info-block__item"
 
-                             >{{course.created | date}}</span>
+                             >{{course.date | date}}</span>
                             <span
                                     class="info-block__read-time info-block__item">{{course.duration | minutsToHours}}</span>
                         </div>
                         <h3 class="post__heading">{{course.title}}</h3>
-                        <p class="post__text">{{course.paragraph}}</p>
+                        <p class="post__text">{{course.description}}</p>
                     </div>
                     <div class="post__btn-wrap">
-                        <a href="#" class="btn btn--secondary">Edit</a>
+                        <a (click)="handleEdit()"
+                           class="btn btn--secondary">Edit</a>
                         <a (click)="handleDelete()"
                            class="btn btn--secondary">Delete</a>
                     </div>

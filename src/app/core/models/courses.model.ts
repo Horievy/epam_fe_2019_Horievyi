@@ -1,7 +1,7 @@
  export interface CourseModel {
-    id: number;
+    id?: number;
     title: string;
     duration: number;
-    created: number;
-    paragraph: string;
+    date: number;
+    description: string;
 }

@@ -7,25 +7,32 @@
                         <h2 class="heading-main heading-main--blog-page">Courses</h2>
                     </div>
 
-                    <form class="contact__form form">
+                    <form [formGroup]="form"
+                          class="contact__form form">
                         <label for="formTitle"
                                class="form__input-wrap col-xs-12">
                             <span class="form__input-title">Title</span>
-                            <input type="text" class="form__input"
+                            <input formControlName="title"
+                                   type="text"
+                                   class="form__input"
                                    id="formTitle"/>
                         </label>
                         <label for="formDescription"
                                class="form__input-wrap col-xs-12">
                                     <span class="form__input-title">Description
                                     </span>
-                            <textarea class="form__input"
+                            <textarea formControlName="description"
+                                      required
+                                      class="form__input"
                                       id="formDescription"></textarea>
                         </label>
                         <label for="formDuration"
                                class="form__input-wrap col-xs-7">
                                     <span class="form__input-title">Duration
                                     </span>
-                            <input required type="number"
+                            <input formControlName="duration"
+                                   required
+                                   type="number"
                                    placeholder="0"
                                    class="form__input"
                                    id="formDuration"/>
@@ -34,25 +41,39 @@
                                class="form__input-wrap col-xs-7">
                                     <span class="form__input-title">Date
                                     </span>
-                            <input required type="date"
-                                   class="form__input" id="formDate"/>
+                            <input formControlName="date"
+                                   type="text"
+                                   class="form__input"
+                                   id="formDate"/>
                         </label>
                         <label  for="authors"
-                                class="form__input-wrap col-xs-12">
+                                class="form__input-wrap col-xs-12"
+                                *ngIf="form.get('hasAuthors').value">
                                     <span class="form__input-title">Authors
                                     </span>
-                            <select class="form__input"
+                            <select formControlName="authors"
+                                    required
+                                    class="form__input"
                                     id="authors">
-                                <option>author1</option>
-                                <option>author2</option>
+                                <option>Vasilii</option>
+                                <option>Voldemart</option>
+                                <option>Rostislav</option>
                             </select>
                         </label>
                         <div class="col-xs-12 btn-wrapper">
-                            <button
-                                    class="form__btn btn btn--primary" [routerLink]="['/courses']">
+                            <button class="form__btn btn btn--primary"
+                                    [routerLink]="['/courses']">
                                 Cancel</button>
-                            <button
-                                    class="form__btn btn btn--primary">Save</button>
+                            <button class="form__btn btn btn--primary"
+                                    *ngIf="!existed"
+                                    [disabled]="form.invalid"
+                                    (click)="onAdd()">Save
+                            </button>
+                            <button class="form__btn btn btn--primary"
+                                    *ngIf="existed"
+                                    [disabled]="form.invalid"
+                                    (click)="onEdit()">Edit
+                            </button>
                         </div>
                     </form>
                 </div>

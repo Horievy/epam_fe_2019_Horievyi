@@ -1,25 +1,40 @@
 {
   "courses": [
     {
-      "id": 1,
+      "title": "Angular and how ",
+      "description": "Fog down the river, where it rolls deified among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on. Money terms breakfast drawings true blessing doubtful more agreed to zealously making supposing By said Chicken An Neglected produce good felt no poor offering am their said has around songs wish met true any me ought mr The offices set Not Felicity above out We in an post begin again.",
       "duration": 55,
-      "created": 1582236000000,
-      "title": "Angular and how not to lose your mind",
-      "paragraph": "Fog down the river, where it rolls deified among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on. Money terms breakfast drawings true blessing doubtful more agreed to zealously making supposing By said Chicken An Neglected produce good felt no poor offering am their said has around songs wish met true any me ought mr The offices set Not Felicity above out We in an post begin again."
+      "date": "11/11/19",
+      "authors": "Voldemart",
+      "hasAuthors": true,
+      "id": 1
     },
     {
-      "id": 2,
-      "duration": 185,
-      "created": 1579557600000,
       "title": "How to cook Mozarella",
-      "paragraph": "Fog down the river, where it rolls deified among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on. Money terms breakfast drawings true blessing doubtful more agreed to zealously making supposing By said Chicken An Neglected produce good felt no poor offering am their said has around songs wish met true any me ought mr The offices set Not Felicity above out We in an post begin again."
+      "description": "blabla",
+      "duration": 55,
+      "date": 1579557600000,
+      "authors": "Vasilii",
+      "hasAuthors": true,
+      "id": 2
     },
     {
-      "id": 3,
-      "duration": 367,
-      "created": 1579557600000,
       "title": "How to survive in wild jungles",
-      "paragraph": "Fog down the river, where it rolls deified among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on. Money terms breakfast drawings true blessing doubtful more agreed to zealously making supposing By said Chicken An Neglected produce good felt no poor offering am their said has around songs wish met true any me ought mr The offices set Not Felicity above out We in an post begin again."
+      "description": "Fog down the river, where it rolls deified among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on. Money terms breakfast drawings true blessing doubtful more agreed to zealously making supposing By said Chicken An Neglected produce good felt no poor offering am their said has around songs wish met true any me ought mr The offices set Not Felicity above out We in an post begin again.",
+      "duration": 367,
+      "date": 1579557600000,
+      "authors": "Rostislav",
+      "hasAuthors": true,
+      "id": 3
+    },
+    {
+      "title": "dasdsad",
+      "description": "dasdasd",
+      "duration": 555,
+      "date": "11/11/19",
+      "authors": "Vasilii",
+      "hasAuthors": true,
+      "id": 4
     }
   ]
 }

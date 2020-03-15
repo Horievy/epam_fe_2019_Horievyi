@@ -35,6 +35,19 @@ a:active {
   border-radius: 5px;
   border: 1px solid $btnMainBgColor;
 
+    &:hover {
+        cursor: pointer;
+    }
+
+    &[disabled] {
+        background-color: lighten($btnMainBgColor, 15.5%);
+
+        &:hover {
+            background-color: lighten($btnMainBgColor, 15.5%);
+            cursor: not-allowed;
+        }
+    }
+
   @include transition(linear background-color 0.3s);
 
   &--primary {
@@ -276,6 +289,13 @@ a:active {
     margin-bottom: 20px;
     display: block;
     position: relative;
+
+    &::before {
+      content: '*required';
+      position: absolute;
+      right: 20px;
+      font-size: 15px;
+    }
   }
 
   &__input-title {
@@ -353,7 +373,7 @@ a:active {
     padding: 30px 36px;
     background-color: $fantasy;
     display: flex;
-    align-items: flex-end;
+    min-height: 270px;
     justify-content: space-between;
 
     &:hover {
@@ -364,6 +384,7 @@ a:active {
   }
 
   &__btn-wrap {
+    align-self: flex-end;
     margin-bottom: 60px;
   }
 
@@ -432,4 +453,12 @@ a:active {
 
     border-color: $black;
   }
+}
+
+.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+form.ng-invalid.ng-touched {
+  border: none;
 }

@@ -11,7 +11,8 @@
         <div class="search">
             <div class="search__wrap">
                 <input type="search" placeholder="Text to search"
-                       class="form__input search__field" id="formSearch">
+                       class="form__input search__field" id="formSearch"
+                       [formControl]="searchControl">
                 <a href="#" class="btn btn--secondary btn--blog-page">Search</a>
             </div>
         </div>
@@ -30,7 +31,9 @@
 
 <app-course *ngFor="let course of courses"
            [course]="course"
-           (deleted)="handleDelete($event)"></app-course>
+           (deleted)="handleDelete($event)"
+           (edit)="handleEdit($event)"></app-course>
+    <h1 class="courses-heading" *ngIf="coursesExists">Courses is Empty</h1>
 
 <div class="container">
     <div class="row">

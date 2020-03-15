@@ -7,14 +7,24 @@ import { CourseComponent } from './components/course/course.component';
 import { CourseFormComponent } from './components/course-form/course-form.component';
 import { MinutsToHoursPipe } from './pipes/minuts-to-hours.pipe';
 import { HightlightNewCourseDirective } from './directives/hightlight-new-course.directive';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [CoursesComponent, NewCourseComponent, CourseComponent, CourseFormComponent, MinutsToHoursPipe, HightlightNewCourseDirective],
+  declarations: [
+    CoursesComponent,
+    NewCourseComponent,
+    CourseComponent,
+    CourseFormComponent,
+    MinutsToHoursPipe,
+    HightlightNewCourseDirective
+  ],
   imports: [
     CommonModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: []
 })

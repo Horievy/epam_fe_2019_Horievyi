@@ -10,12 +10,17 @@ export class CourseComponent implements OnInit {
 
   @Input() course: CourseModel;
   @Output() deleted: EventEmitter<number> = new EventEmitter();
+  @Output() edit: EventEmitter<number> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  handleDelete() {
+  handleDelete(): void {
     this.deleted.emit(this.course.id);
+  }
+
+  handleEdit(): void {
+    this.edit.emit(this.course.id);
   }
 }
